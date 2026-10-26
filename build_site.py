@@ -1,11 +1,11 @@
-"""site/ 템플릿 → github_upload/ 배포 파일 생성.
+"""site/ 템플릿 → 저장소 루트의 배포 파일 생성 (GitHub Pages가 루트를 서비스).
 .env의 AMPLITUDE_API_KEY만 HTML에 주입한다. 비밀키(AMPLITUDE_SECRET_KEY)는 절대 주입하지 않는다.
 사용법: python build_site.py
 """
 import os, sys
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-SRC, OUT = os.path.join(ROOT, "site"), os.path.join(ROOT, "github_upload")
+SRC, OUT = os.path.join(ROOT, "site"), ROOT
 
 
 def load_env(path):

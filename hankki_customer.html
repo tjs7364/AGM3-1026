@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>한끼배달 웰컴 혜택</title>
+<meta name="description" content="처음이거나 1년 만이라면! 첫 주문 10,000원 할인 + 한끼패스 첫 달 무료 + 친구 초대 시 둘 다 5,000원.">
+<meta property="og:title" content="한끼배달 처음이세요? 웰컴 혜택 3종 받아가세요">
+<meta property="og:description" content="첫 주문 10,000원 할인 · 한끼패스 첫 달 무료 · 친구 초대 시 둘 다 5,000원">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mint: #F45A2A;
+    --mint-dark: #C9441A;
+    --mint-light: #FFEDE5;
+    --ink: #1D1D1F;
+    --ink-sub: #555B61;
+    --ink-mute: #8A9096;
+    --bg: #FFFFFF;
+    --bg-soft: #F6F8F9;
+    --navy: #2B2321;
+    --yellow: #FFD84D;
+    --red: #FF5A5A;
+    --line: #E5E8EB;
+    --radius: 20px;
+    --shadow: 0 10px 30px rgba(29, 29, 31, .08);
+    --gutter: 20px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink); background: var(--bg); line-height: 1.55;
+    -webkit-font-smoothing: antialiased; word-break: keep-all; overflow-x: hidden;
+  }
+  img, svg { display: block; max-width: 100%; }
+  .display { font-family: 'Do Hyeon', sans-serif; font-weight: 400; letter-spacing: -0.5px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 var(--gutter); }
+  section { padding: 56px 0; }
+  .eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 700; color: var(--mint-dark);
+    background: var(--mint-light); padding: 6px 12px; border-radius: 999px; margin-bottom: 14px;
+  }
+  .sec-title { font-size: clamp(26px, 7.5vw, 44px); line-height: 1.25; margin-bottom: 10px; }
+  .sec-desc { color: var(--ink-sub); font-size: 15px; }
+  .hl { color: var(--mint-dark); }
+  .center { text-align: center; }
+
+  /* ---------- 버튼 ---------- */
+  .btn {
+    display: block; width: 100%; padding: 17px 16px; line-height: 1.4; border: 0; border-radius: 16px; cursor: pointer;
+    font-family: inherit; font-size: clamp(15px, 4.6vw, 18px); font-weight: 900; text-decoration: none;
+    transition: transform .15s ease, box-shadow .15s ease; text-align: center;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn-primary { background: var(--ink); color: #fff; box-shadow: 0 8px 20px rgba(0,0,0,.18); }
+  .btn-mint { background: var(--mint); color: #fff; box-shadow: 0 8px 20px rgba(244,90,42,.35); }
+  .btn-yellow { background: var(--yellow); color: var(--ink); }
+  .inline-cta { margin-top: 28px; }
+  .inline-cta small { display: block; text-align: center; font-size: 12px; color: var(--ink-mute); margin-top: 8px; }
+
+  /* ---------- ① 헤더 ---------- */
+  .header {
+    position: sticky; top: 0; z-index: 50; background: rgba(244,90,42,.97); backdrop-filter: blur(8px);
+  }
+  .header .wrap { height: 56px; display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-family: 'Do Hyeon', sans-serif; font-size: 24px; color: #fff; }
+  .header-btn {
+    background: #fff; color: var(--mint-dark); font-weight: 700; font-size: 13px;
+    padding: 8px 14px; border-radius: 999px; text-decoration: none; white-space: nowrap;
+  }
+
+  /* ---------- ② 히어로 ---------- */
+  .hero { background: var(--mint); color: #fff; padding: 28px 0 40px; position: relative; overflow: hidden; }
+  .hero::before, .hero::after { content: ''; position: absolute; border-radius: 50%; background: rgba(255,255,255,.12); }
+  .hero::before { width: 260px; height: 260px; top: -90px; right: -80px; }
+  .hero::after  { width: 180px; height: 180px; bottom: 30px; left: -70px; }
+  .hero-grid { position: relative; z-index: 1; text-align: center; }
+  .hero-badge {
+    display: inline-block; background: var(--yellow); color: var(--ink);
+    font-weight: 900; font-size: 13px; padding: 6px 14px; border-radius: 999px; margin-bottom: 14px;
+  }
+  .hero-title { font-size: clamp(32px, 10.5vw, 60px); line-height: 1.15; margin-bottom: 10px; }
+  .hero-title em { font-style: normal; color: var(--yellow); }
+  .hero-sub { font-size: clamp(14px, 4.2vw, 18px); opacity: .95; margin-bottom: 20px; }
+  .hero-sub b { color: var(--yellow); }
+  .hero-cta { margin-top: 20px; }
+  .event-period {
+    margin-top: 12px; font-size: 13px; display: flex; align-items: center; justify-content: center;
+    gap: 6px; flex-wrap: wrap;
+  }
+  .event-period b { background: rgba(0,0,0,.18); padding: 2px 8px; border-radius: 6px; font-variant-numeric: tabular-nums; }
+  .desktop-only { display: none !important; }
+  .hero-visual { margin-top: 30px; }
+  .dday { background: var(--red) !important; }
+
+  /* 히어로 이미지: 쿠폰함 폰 목업 (혜택 3종이 그대로 보이도록) */
+  .phone {
+    width: min(270px, 82vw); margin: 0 auto; background: #111; border-radius: 34px; padding: 10px;
+    box-shadow: 0 24px 50px rgba(0,0,0,.25); position: relative;
+  }
+  .phone-screen { background: #F4F6F7; border-radius: 26px; overflow: hidden; color: var(--ink); text-align: left; }
+  .ps-top { background: #fff; padding: 12px 14px 10px; display: flex; justify-content: space-between; align-items: center; }
+  .ps-top b { font-size: 14px; }
+  .ps-top span { font-size: 11px; color: #fff; background: var(--red); padding: 2px 8px; border-radius: 999px; font-weight: 700; }
+  .ps-list { padding: 10px; display: grid; gap: 8px; }
+  .ticket {
+    display: flex; align-items: center; gap: 10px; background: #fff; border-radius: 12px; padding: 9px 10px;
+    border-left: 4px solid var(--mint); animation: slideIn .5s ease backwards;
+  }
+  .ticket:nth-child(2) { animation-delay: .25s; border-color: var(--navy); }
+  .ticket:nth-child(3) { animation-delay: .5s; border-color: var(--yellow); }
+  @keyframes slideIn { from { transform: translateX(16px); } to { transform: none; } }
+  .ticket .ic { flex: 0 0 30px; height: 30px; }
+  .ticket .t { flex: 1; min-width: 0; }
+  .ticket .t small { display: block; font-size: 10px; color: var(--ink-mute); line-height: 1.3; }
+  .ticket .t b { font-size: 12px; line-height: 1.3; display: block; }
+  .ticket .v { font-family: 'Do Hyeon', sans-serif; font-size: 18px; color: var(--mint-dark); white-space: nowrap; }
+  .ps-total {
+    margin: 2px 10px 12px; background: var(--ink); color: #fff; border-radius: 12px; padding: 10px;
+    display: flex; justify-content: space-between; align-items: center; font-size: 12px;
+  }
+  .ps-total b { font-family: 'Do Hyeon', sans-serif; font-size: 20px; color: var(--yellow); font-weight: 400; }
+  .food {
+    position: absolute; width: 74px; height: 74px; border-radius: 50%; background: #fff; display: grid; place-items: center;
+    font-size: 40px; box-shadow: 0 10px 24px rgba(0,0,0,.18); z-index: 2; animation: bob 2.6s ease-in-out infinite;
+  }
+  .food.f1 { left: -46px; top: 40%; }
+  .food.f2 { right: -40px; bottom: 18%; animation-delay: .8s; width: 62px; height: 62px; font-size: 32px; }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  .sticker {
+    position: absolute; left: -18px; bottom: 40px; background: var(--red); z-index: 3; color: #fff;
+    font-weight: 900; font-size: 12px; line-height: 1.15; width: 62px; height: 62px; border-radius: 50%;
+    display: grid; place-items: center; text-align: center; transform: rotate(-12deg);
+    box-shadow: 0 6px 14px rgba(0,0,0,.2);
+  }
+
+  /* ---------- ③ 혜택 요약 ---------- */
+  .summary { background: var(--bg-soft); }
+  .benefit-list { display: grid; gap: 12px; margin-top: 24px; }
+  .benefit-card {
+    display: grid; grid-template-columns: 52px 1fr auto; align-items: center; gap: 14px; background: #fff;
+    border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); text-decoration: none; color: inherit;
+  }
+  .benefit-ic { width: 52px; height: 52px; border-radius: 14px; background: var(--mint-light); display: grid; place-items: center; }
+  .benefit-ic svg { width: 30px; height: 30px; }
+  .benefit-card h3 { font-size: 16px; font-weight: 700; line-height: 1.35; }
+  .benefit-card p { font-size: 13px; color: var(--ink-sub); }
+  .benefit-card .amt { font-family: 'Do Hyeon', sans-serif; font-size: 24px; color: var(--mint-dark); white-space: nowrap; }
+  .sum-total {
+    margin-top: 14px; text-align: center; font-size: 15px; color: var(--ink-sub);
+  }
+  .sum-total b { color: var(--ink); font-size: 18px; }
+
+  /* ---------- 혜택 상세 공통 (텍스트 + 이미지 2단) ---------- */
+  .feature { display: grid; gap: 28px; align-items: center; }
+  .check-list { list-style: none; margin-top: 18px; display: grid; gap: 8px; }
+  .check-list li { position: relative; padding-left: 24px; font-size: 15px; color: var(--ink-sub); }
+  .check-list li::before { content: '✔'; position: absolute; left: 0; color: var(--mint); font-weight: 900; }
+
+  /* ④ 첫 주문: 쿠폰 + 영수증 */
+  .coupon { display: flex; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+  .coupon-left { flex: 1; min-width: 0; background: var(--mint); color: #fff; padding: 20px 18px; }
+  .coupon-left small { font-size: 12px; opacity: .9; }
+  .coupon-left .price { font-family: 'Do Hyeon', sans-serif; font-size: clamp(34px, 11vw, 46px); line-height: 1.1; }
+  .coupon-left p { font-size: 12px; opacity: .9; }
+  .coupon-right {
+    flex: 0 0 clamp(64px, 20vw, 96px); background: var(--yellow); display: grid; place-items: center;
+    font-weight: 900; font-size: 13px; text-align: center; border-left: 2px dashed rgba(0,0,0,.25); padding: 4px;
+  }
+  .receipt {
+    margin-top: 14px; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; font-size: 14px;
+  }
+  .receipt h4 { font-size: 13px; color: var(--ink-mute); font-weight: 500; margin-bottom: 8px; }
+  .receipt .row { display: flex; justify-content: space-between; gap: 8px; padding: 3px 0; }
+  .receipt .minus { color: var(--red); font-weight: 700; }
+  .receipt .sum { border-top: 1px dashed var(--line); margin-top: 6px; padding-top: 8px; font-weight: 900; font-size: 16px; }
+  .receipt .sum span:last-child { color: var(--mint-dark); }
+  .receipt del { color: var(--ink-mute); font-weight: 400; font-size: 13px; margin-right: 4px; }
+
+  /* ⑤ 한끼패스 */
+  .club { background: linear-gradient(180deg, #2B2321 0%, #3B302C 100%); color: #fff; }
+  .club .eyebrow { background: rgba(255,216,77,.18); color: var(--yellow); }
+  .club .sec-desc { color: rgba(255,255,255,.78); }
+  .club .check-list li { color: rgba(255,255,255,.8); }
+  .club-card {
+    border-radius: 22px; padding: 22px; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #F45A2A 0%, #C9441A 55%, #9A3212 100%);
+    box-shadow: 0 20px 40px rgba(0,0,0,.35); aspect-ratio: 1.6 / 1; max-width: 420px; width: 100%; margin: 0 auto;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .club-card::after { content: ''; position: absolute; width: 180px; height: 180px; border-radius: 50%; background: rgba(255,255,255,.1); right: -50px; top: -60px; }
+  .club-card .brand { display: flex; align-items: center; gap: 8px; font-family: 'Do Hyeon', sans-serif; font-size: 22px; }
+  .club-card .brand svg { width: 26px; height: 26px; }
+  .club-card .free { font-family: 'Do Hyeon', sans-serif; font-size: clamp(30px, 10vw, 44px); color: var(--yellow); line-height: 1; }
+  .club-card .free del { font-size: 16px; color: rgba(255,255,255,.6); margin-left: 6px; font-family: 'Noto Sans KR'; }
+  .club-card small { font-size: 12px; opacity: .85; }
+  .club-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+  .club-item { background: rgba(255,255,255,.07); border-radius: 14px; padding: 14px; }
+  .club-item svg { width: 26px; height: 26px; }
+  .club-item h4 { font-size: 14px; margin-top: 6px; }
+  .club-item p { font-size: 12px; color: rgba(255,255,255,.65); }
+
+  /* ⑥ 친구 초대: 대화 목업 */
+  .chat { background: #B9D7EA; border-radius: 22px; padding: 18px 14px; display: grid; gap: 10px; max-width: 420px; width: 100%; margin: 0 auto; }
+  .bubble { max-width: 85%; padding: 10px 13px; border-radius: 16px; font-size: 14px; line-height: 1.45; background: #fff; }
+  .bubble.me { justify-self: end; background: #FEE500; }
+  .bubble .code { display: inline-block; margin-top: 4px; font-weight: 900; letter-spacing: 1px; background: rgba(0,0,0,.06); padding: 2px 8px; border-radius: 6px; }
+  .push {
+    background: #fff; border-radius: 14px; padding: 10px 12px; display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: center;
+    box-shadow: 0 6px 16px rgba(0,0,0,.12); font-size: 13px;
+  }
+  .push .app { width: 34px; height: 34px; border-radius: 9px; background: var(--mint); color: #fff; display: grid; place-items: center; font-family: 'Do Hyeon'; font-size: 13px; }
+  .push b { display: block; font-size: 13px; }
+  .push span { color: var(--ink-sub); font-size: 12px; }
+  .ref-box {
+    margin-top: 20px; border: 2px dashed var(--mint); border-radius: 16px; padding: 14px 16px;
+    display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+  }
+  .ref-box small { display: block; font-size: 12px; color: var(--ink-mute); }
+  .ref-box strong { font-size: 19px; letter-spacing: 1.5px; word-break: break-all; }
+  .copy-btn {
+    background: var(--mint); color: #fff; border: 0; border-radius: 10px; padding: 10px 14px;
+    font-family: inherit; font-weight: 700; font-size: 14px; cursor: pointer; white-space: nowrap;
+  }
+  .ref-guide { margin-top: 20px; background: var(--bg-soft); border-radius: 16px; padding: 16px; font-size: 14px; color: var(--ink-sub); }
+  .ref-guide b { color: var(--ink); }
+  [hidden] { display: none !important; }
+
+  /* ---------- ⑦ 받는 방법 ---------- */
+  .steps-sec { background: var(--mint-light); }
+  .steps { margin-top: 26px; display: grid; gap: 14px; counter-reset: step; }
+  .step { background: #fff; border-radius: var(--radius); padding: 18px 18px 18px 68px; position: relative; box-shadow: var(--shadow); }
+  .step::before {
+    counter-increment: step; content: counter(step); position: absolute; left: 18px; top: 18px;
+    width: 34px; height: 34px; border-radius: 50%; background: var(--mint); color: #fff;
+    display: grid; place-items: center; font-weight: 900;
+  }
+  .step h4 { font-size: 16px; }
+  .step p { font-size: 13px; color: var(--ink-sub); }
+
+  /* ---------- ⑧ 신뢰 ---------- */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 26px; }
+  .stat { background: var(--bg-soft); border-radius: 16px; padding: 16px 4px; text-align: center; }
+  .stat strong { display: block; font-family: 'Do Hyeon', sans-serif; font-size: clamp(20px, 6.5vw, 32px); color: var(--mint-dark); }
+  .stat span { font-size: 12px; color: var(--ink-sub); }
+  .cats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 20px; }
+  .cat { text-align: center; font-size: 12px; color: var(--ink-sub); }
+  .cat div { font-size: 28px; background: var(--bg-soft); border-radius: 16px; padding: 10px 0; margin-bottom: 4px; }
+  .reviews { margin-top: 22px; display: grid; gap: 10px; }
+  .review { border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; font-size: 14px; }
+  .review .stars { color: #FFB800; font-size: 13px; }
+  .review .who { color: var(--ink-mute); font-size: 12px; margin-top: 4px; }
+
+  /* ---------- ⑨ FAQ ---------- */
+  .faq { background: var(--bg-soft); }
+  .faq-wrap { max-width: 760px; margin: 0 auto; }
+  .faq-item { background: #fff; border-radius: 14px; margin-top: 10px; overflow: hidden; }
+  .faq-q {
+    width: 100%; text-align: left; background: none; border: 0; padding: 16px 44px 16px 16px;
+    font-family: inherit; font-size: 15px; font-weight: 700; color: var(--ink); cursor: pointer; position: relative;
+  }
+  .faq-q::after { content: '+'; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 22px; color: var(--mint); transition: transform .2s; }
+  .faq-item.open .faq-q::after { transform: translateY(-50%) rotate(45deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height .25s ease; }
+  .faq-a p { padding: 0 16px 16px; font-size: 14px; color: var(--ink-sub); }
+  .notice { margin-top: 28px; font-size: 12px; color: var(--ink-mute); }
+  .notice h4 { font-size: 13px; color: var(--ink-sub); margin-bottom: 6px; }
+  .notice li { margin-left: 16px; margin-bottom: 3px; }
+
+  /* ---------- ⑩ 마지막 CTA ---------- */
+  .final { background: var(--mint); color: #fff; text-align: center; }
+  .final .sec-desc { color: rgba(255,255,255,.92); margin-bottom: 18px; }
+  .recap { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 22px; }
+  .recap > span { background: rgba(255,255,255,.18); border-radius: 999px; padding: 6px 12px; font-size: 13px; font-weight: 700; }
+  .final-box { max-width: 520px; margin: 0 auto; }
+  .store-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+  .store-btn {
+    display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 50px;
+    background: #fff; color: var(--ink); border-radius: 14px; text-decoration: none; font-weight: 700; font-size: 14px;
+  }
+  .store-btn svg { width: 18px; height: 18px; }
+  .qr-card { background: #fff; color: var(--ink); border-radius: 20px; padding: 16px; display: flex; gap: 16px; align-items: center; text-align: left; }
+  .qr-box { flex: 0 0 120px; height: 120px; display: grid; place-items: center; background: #fff; }
+  .qr-box img, .qr-box canvas { width: 120px !important; height: 120px !important; }
+  .qr-card b { font-size: 17px; display: block; }
+  .qr-card p { font-size: 13px; color: var(--ink-sub); }
+  .footer { padding: 24px 20px 120px; font-size: 11px; color: var(--ink-mute); text-align: center; }
+
+  /* ---------- ⑪ 하단 고정 CTA (모바일) ---------- */
+  .sticky-cta {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    padding: 12px var(--gutter) calc(12px + env(safe-area-inset-bottom));
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #fff 32%);
+    transform: translateY(110%); transition: transform .3s ease;
+  }
+  .sticky-cta.show { transform: none; }
+  .sticky-cta .btn { max-width: 520px; margin: 0 auto; }
+
+  /* ---------- QR 모달 (데스크톱) ---------- */
+  .modal { position: fixed; inset: 0; z-index: 80; background: rgba(0,0,0,.5); display: none; place-items: center; padding: 20px; }
+  .modal.open { display: grid; }
+  .modal-box { background: #fff; border-radius: 24px; padding: 28px; text-align: center; max-width: 340px; width: 100%; position: relative; }
+  .modal-box h3 { font-size: 20px; margin-bottom: 4px; }
+  .modal-box p { font-size: 14px; color: var(--ink-sub); margin-bottom: 16px; }
+  .modal-box .qr-box { margin: 0 auto 16px; width: 160px; height: 160px; }
+  .modal-box .qr-box img, .modal-box .qr-box canvas { width: 160px !important; height: 160px !important; }
+  .modal-close { position: absolute; right: 14px; top: 10px; background: none; border: 0; font-size: 26px; cursor: pointer; color: var(--ink-mute); }
+
+  .reveal { }
+  .toast {
+    position: fixed; left: 50%; bottom: 110px; transform: translateX(-50%); background: rgba(29,29,31,.9); color: #fff;
+    padding: 10px 18px; border-radius: 999px; font-size: 14px; opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 90; white-space: nowrap;
+  }
+  .toast.show { opacity: 1; }
+
+  /* ========== 반응형 ========== */
+  /* 폴드 커버·폴더폰 등 초소형 (≤360px) */
+  @media (max-width: 360px) {
+    :root { --gutter: 16px; }
+    section { padding: 44px 0; }
+    .hero { padding-top: 20px; }
+    .hero-badge { font-size: 11px; padding: 5px 10px; }
+    .phone { width: 220px; border-radius: 28px; padding: 8px; }
+    .phone-screen { border-radius: 22px; }
+    .ps-list { padding: 8px; gap: 6px; }
+    .ticket { padding: 7px 8px; gap: 8px; }
+    .ticket .ic { flex-basis: 24px; height: 24px; }
+    .ticket .t small { display: none; }
+    .ticket .v { font-size: 16px; }
+    .sticker { width: 50px; height: 50px; font-size: 10px; left: -14px; bottom: 30px; }
+    .event-period { font-size: 11px; gap: 4px; }
+    .event-period b { padding: 2px 5px; }
+    .food.f1 { width: 46px; height: 46px; font-size: 24px; left: auto; right: -16px; top: auto; bottom: -14px; }
+    .food.f2 { display: none; }
+    .hero-visual { margin-top: 24px; }
+    .benefit-card { grid-template-columns: 44px 1fr; padding: 14px; gap: 12px; }
+    .benefit-ic { width: 44px; height: 44px; }
+    .benefit-card .amt { grid-column: 2; font-size: 22px; margin-top: -6px; }
+    .store-row { grid-template-columns: 1fr; }
+    .cats { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+    .cat div { font-size: 22px; }
+    .stat span { font-size: 11px; }
+    .club-grid { grid-template-columns: 1fr; }
+    .step { padding-left: 60px; }
+    .step::before { left: 14px; }
+  }
+
+  /* 태블릿 (≥700px) */
+  @media (min-width: 700px) {
+    section { padding: 80px 0; }
+    .benefit-list { grid-template-columns: repeat(3, 1fr); }
+    .benefit-card { grid-template-columns: 1fr; text-align: center; justify-items: center; padding: 26px 18px; }
+    .steps { grid-template-columns: repeat(3, 1fr); }
+    .step { padding: 64px 18px 20px; text-align: center; }
+    .step::before { left: 50%; transform: translateX(-50%); }
+    .cats { grid-template-columns: repeat(8, 1fr); }
+    .reviews { grid-template-columns: 1fr 1fr; }
+    .club-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  /* 데스크톱 (≥1024px): 2단 레이아웃 + QR 설치 */
+  @media (min-width: 1024px) {
+    :root { --gutter: 32px; }
+    .hero { padding: 64px 0 72px; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; text-align: left; }
+    .hero-copy { order: 1; }
+    .hero-visual { order: 2; margin-top: 0; }
+    .event-period { justify-content: flex-start; }
+    .phone { width: 320px; }
+    .ticket .t b { font-size: 14px; }
+    .ticket .v { font-size: 22px; }
+    .mobile-only { display: none !important; }
+    .desktop-only { display: block !important; }
+    .qr-card.desktop-only { display: flex !important; }
+    .hero .qr-card { margin-top: 26px; max-width: 460px; }
+    .feature { grid-template-columns: 1fr 1fr; gap: 64px; }
+    .feature.reverse .feature-visual { order: -1; }
+    .sticky-cta { display: none; }
+    .final .qr-card { max-width: 460px; margin: 0 auto 14px; }
+    .reviews { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .food { animation: none; }
+    .reveal, .ticket { opacity: 1; transform: none; transition: none; animation: none; }
+  }
+</style>
+</head>
+<body data-page="customer">
+<!-- SVG 아이콘 정의 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-coupon" viewBox="0 0 32 32"><path d="M3 9a2 2 0 0 1 2-2h22a2 2 0 0 1 2 2v4a3 3 0 0 0 0 6v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4a3 3 0 0 0 0-6z" fill="#F45A2A"/><path d="M20 8v16" stroke="#fff" stroke-width="1.6" stroke-dasharray="2 2"/><text x="11.5" y="20.5" font-size="10" font-weight="900" fill="#fff" text-anchor="middle" font-family="sans-serif">₩</text></symbol>
+    <symbol id="i-crown" viewBox="0 0 32 32"><path d="M5 11l5.5 5L16 7l5.5 9L27 11l-2.5 13h-17z" fill="#2B2321"/><rect x="7.5" y="25" width="17" height="3" rx="1.5" fill="#FFD84D"/><circle cx="16" cy="7" r="2" fill="#FFD84D"/></symbol>
+    <symbol id="i-friends" viewBox="0 0 32 32"><circle cx="11" cy="11" r="4.5" fill="#F45A2A"/><circle cx="22" cy="11" r="4.5" fill="#FFB800"/><path d="M3 25c0-4.4 3.6-7 8-7s8 2.6 8 7z" fill="#F45A2A"/><path d="M14 25c0-4.4 3.6-7 8-7s8 2.6 8 7z" fill="#FFB800"/></symbol>
+    <symbol id="i-scooter" viewBox="0 0 32 32"><circle cx="8" cy="23" r="4" fill="none" stroke="#FFD84D" stroke-width="2.4"/><circle cx="24" cy="23" r="4" fill="none" stroke="#FFD84D" stroke-width="2.4"/><path d="M8 23h10l4-10h-5M22 13l2 10" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="5" y="11" width="9" height="7" rx="1.5" fill="#F45A2A"/></symbol>
+    <symbol id="i-sale" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="#FFD84D"/><path d="M11 21l10-10" stroke="#2B2321" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="12" r="2" fill="#2B2321"/><circle cx="20" cy="20" r="2" fill="#2B2321"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 32 32"><path d="M4 6h4l3 14h14l3-10H10" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="13" cy="25" r="2.2" fill="#F45A2A"/><circle cx="23" cy="25" r="2.2" fill="#F45A2A"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 32 32"><path d="M18 3L7 18h8l-2 11 12-16h-8z" fill="#F45A2A"/></symbol>
+    <symbol id="i-apple" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8 2.1-1.2 2.9-2.4c.9-1.4 1.3-2.7 1.3-2.8 0 0-2.5-1-2.5-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path fill="#F45A2A" d="M4 3.5v17l9-8.5z"/><path fill="#FFB800" d="M13 12l3 2.8 4-2.3c.7-.4.7-1 0-1.4l-4-2.3z"/><path fill="#FF5A5A" d="M4 20.5l9-8.5 3 2.8L5.2 21c-.4.2-.9 0-1.2-.5z"/><path fill="#1D9BF0" d="M4 3.5c.3-.5.8-.7 1.2-.5L16 9.2 13 12z"/></symbol>
+  </defs>
+</svg>
+
+<!-- ① 헤더 -->
+<header class="header">
+  <div class="wrap">
+    <span class="logo">한끼배달</span>
+    <a href="#" class="header-btn js-download" data-cta="header">앱 받고 혜택 받기</a>
+  </div>
+</header>
+
+<!-- ② 히어로 -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="hero-badge" id="heroBadge">🎁 처음 오신 분 · 1년 만에 오신 분 한정</span>
+      <h1 class="hero-title display">오늘 저녁,<br><em>한끼배달</em>이 쏠게요</h1>
+      <p class="hero-sub">가입만 해도 웰컴 혜택 3종, <b>총 <span data-b="total">18,990</span>원</b></p>
+
+      <div class="hero-cta mobile-only">
+        <a href="#" class="btn btn-primary js-download" data-cta="hero">앱 설치하고 혜택 받기 →</a>
+      </div>
+      <div class="qr-card desktop-only" data-cta="hero_qr" data-cta-kind="qr">
+        <div class="qr-box js-qr"></div>
+        <div>
+          <b>휴대폰 카메라로 QR을 찍어보세요</b>
+          <p>앱 설치 페이지로 바로 이동해요.<br>가입하면 쿠폰이 자동으로 들어와요.</p>
+        </div>
+      </div>
+      <p class="event-period">이벤트 기간 <b data-b="period">2026.11.01 ~ 11.30</b> <b class="dday" id="dday" hidden></b></p>
+    </div>
+
+    <div class="hero-visual">
+      <div class="phone" role="img" aria-label="가입 즉시 쿠폰함에 들어오는 혜택 3종">
+        <div class="food f1" aria-hidden="true">🍗</div>
+        <div class="food f2" aria-hidden="true">🍕</div>
+        <div class="phone-screen">
+          <div class="ps-top"><b>내 쿠폰함</b><span class="new">가입 즉시 3장 도착</span></div>
+          <div class="ps-list">
+            <div class="ticket"><svg class="ic"><use href="#i-coupon"/></svg><div class="t"><b>첫 주문 할인</b><small><span data-b="minOrder">15,000</span>원 이상 주문 시</small></div><span class="v"><span data-b="firstOrder">10,000</span>원</span></div>
+            <div class="ticket"><svg class="ic"><use href="#i-crown"/></svg><div class="t"><b>한끼패스 1개월</b><small>무료배달 · 추가할인</small></div><span class="v">무료</span></div>
+            <div class="ticket"><svg class="ic"><use href="#i-friends"/></svg><div class="t"><b>친구 초대 쿠폰</b><small>나도 친구도 받아요</small></div><span class="v"><span data-b="invite">5,000</span>원</span></div>
+          </div>
+          <div class="ps-total"><span>웰컴 혜택 합계</span><b><span data-b="total">18,990</span>원</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ 혜택 요약 -->
+<section class="summary">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">WELCOME BENEFIT</span>
+      <h2 class="sec-title display">이 혜택, <span class="hl">한 번에</span> 다 드려요</h2>
+      <p class="sec-desc">가입 즉시 쿠폰함에 자동으로 들어가요</p>
+    </div>
+    <div class="benefit-list">
+      <a href="#b1" class="benefit-card reveal">
+        <div class="benefit-ic"><svg><use href="#i-coupon"/></svg></div>
+        <div><h3>첫 주문 할인</h3><p>처음 또는 1년 만의 주문</p></div>
+        <span class="amt"><span data-b="firstOrder">10,000</span>원</span>
+      </a>
+      <a href="#b2" class="benefit-card reveal">
+        <div class="benefit-ic"><svg><use href="#i-crown"/></svg></div>
+        <div><h3>한끼패스 첫 달 무료</h3><p>무료배달 + 추가 할인</p></div>
+        <span class="amt"><span data-b="club">3,990</span>원 → 0원</span>
+      </a>
+      <a href="#b3" class="benefit-card reveal">
+        <div class="benefit-ic"><svg><use href="#i-friends"/></svg></div>
+        <div><h3>친구 초대 쿠폰</h3><p>초대한 친구와 나, 둘 다</p></div>
+        <span class="amt">각 <span data-b="invite">5,000</span>원</span>
+      </a>
+    </div>
+    <p class="sum-total reveal">모두 합치면 <b>총 <span data-b="total">18,990</span>원</b> 혜택</p>
+    <div class="inline-cta reveal mobile-only" style="max-width:520px;margin-left:auto;margin-right:auto">
+      <a href="#" class="btn btn-mint js-download" data-cta="summary">혜택 3종 한 번에 받기</a>
+    </div>
+  </div>
+</section>
+
+<!-- ④ 혜택 1: 첫 주문 -->
+<section id="b1">
+  <div class="wrap feature">
+    <div class="reveal">
+      <span class="eyebrow">혜택 1 · 첫 주문 할인</span>
+      <h2 class="sec-title display">첫 주문은<br><span class="hl"><span data-b="firstOrder">10,000</span>원</span> 깎고 시작해요</h2>
+      <p class="sec-desc">치킨, 피자, 떡볶이… 먹고 싶던 그 메뉴, 부담 없이 주문하세요.</p>
+      <ul class="check-list">
+        <li>한끼배달을 처음 쓰는 분이라면 누구나</li>
+        <li>마지막 주문 후 1년이 지난 분도 OK</li>
+        <li><span data-b="minOrder">15,000</span>원 이상 주문 · 발급 후 7일간 사용</li>
+      </ul>
+    </div>
+    <div class="feature-visual reveal">
+      <div class="coupon">
+        <div class="coupon-left">
+          <small>신규 · 복귀 고객 전용</small>
+          <div class="price"><span data-b="firstOrder">10,000</span>원</div>
+          <p><span data-b="minOrder">15,000</span>원 이상 주문 시 · 7일</p>
+        </div>
+        <div class="coupon-right">가입 시<br>자동<br>지급</div>
+      </div>
+      <div class="receipt">
+        <h4>이렇게 결제돼요 (예시)</h4>
+        <div class="row"><span>🍗 후라이드 치킨</span><span>20,000원</span></div>
+        <div class="row"><span>배달팁</span><span>3,000원</span></div>
+        <div class="row minus"><span>첫 주문 쿠폰</span><span>-<span data-b="firstOrder">10,000</span>원</span></div>
+        <div class="row minus"><span>한끼패스 무료배달</span><span>-3,000원</span></div>
+        <div class="row sum"><span>최종 결제</span><span><del>23,000원</del>10,000원</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ 혜택 2: 한끼패스 -->
+<section class="club" id="b2">
+  <div class="wrap feature reverse">
+    <div class="reveal">
+      <span class="eyebrow">혜택 2 · 한끼패스 무료 체험</span>
+      <h2 class="sec-title display">한끼패스,<br>첫 달은 <span style="color:var(--yellow)">0원</span>으로 써보세요</h2>
+      <p class="sec-desc">회원가입하면 한끼패스 한 달 무료 체험이 바로 시작돼요.</p>
+      <ul class="check-list">
+        <li>체험 종료 전 언제든 해지 가능 · 해지 수수료 없음</li>
+        <li>정기결제 3일 전에 알림을 보내드려요</li>
+      </ul>
+    </div>
+    <div class="feature-visual reveal">
+      <div class="club-card" role="img" aria-label="한끼패스 멤버십 카드, 첫 달 0원">
+        <div class="brand"><svg><use href="#i-crown"/></svg>한끼패스</div>
+        <div>
+          <small>신규 · 복귀 고객 첫 달</small>
+          <div class="free">0원<del>월 <span data-b="club">3,990</span>원</del></div>
+        </div>
+      </div>
+      <div class="club-grid">
+        <div class="club-item"><svg><use href="#i-scooter"/></svg><h4>무료배달</h4><p>클럽 가게 배달팁 0원</p></div>
+        <div class="club-item"><svg><use href="#i-sale"/></svg><h4>추가 할인</h4><p>클럽 전용 쿠폰 매월</p></div>
+        <div class="club-item"><svg><use href="#i-cart"/></svg><h4>장보기·쇼핑</h4><p>한끼마트 배달비 혜택</p></div>
+        <div class="club-item"><svg><use href="#i-bolt"/></svg><h4>단독배달</h4><p>더 빠르고 따뜻하게</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ 혜택 3: 친구 초대 -->
+<section id="b3">
+  <div class="wrap feature">
+    <div class="reveal">
+      <span class="eyebrow">혜택 3 · 친구 초대</span>
+      <h2 class="sec-title display">친구 코드로 가입하면<br><span class="hl">둘 다 <span data-b="invite">5,000</span>원</span></h2>
+      <p class="sec-desc">가입할 때 추천인 코드를 입력하면, 나와 친구 모두에게 쿠폰이 지급돼요.</p>
+
+      <!-- 추천 링크로 들어온 경우 -->
+      <div class="ref-box" id="refHas" hidden>
+        <div><small>친구가 보낸 추천인 코드</small><strong id="refCode"></strong></div>
+        <button class="copy-btn" id="copyBtn" type="button" data-cta="ref_copy" data-cta-kind="copy">코드 복사</button>
+      </div>
+      <!-- 일반 광고로 들어온 경우 -->
+      <div class="ref-guide" id="refNone">
+        <b>친구에게 받은 코드가 있나요?</b> 가입 화면 ‘추천인 코드’ 칸에 입력하세요.<br>
+        <b>없어도 괜찮아요.</b> 가입 후 [마이페이지 &gt; 친구 초대]에서 내 코드를 보내면, 친구가 가입할 때 둘 다 <span data-b="invite">5,000</span>원을 받아요.
+      </div>
+      <div class="inline-cta mobile-only">
+        <a href="#" class="btn btn-mint js-download" data-cta="invite" id="inviteCta">앱 설치하고 <span data-b="invite">5,000</span>원 받기</a>
+      </div>
+    </div>
+    <div class="feature-visual reveal">
+      <div class="chat" role="img" aria-label="친구가 추천 코드를 보내고 둘 다 쿠폰을 받는 과정">
+        <div class="bubble">야 한끼배달 아직 안 깔았어? 가입할 때 내 코드 넣어 👇<br><span class="code">FRIEND123</span></div>
+        <div class="bubble me">오 넣었어! 쿠폰 들어옴 ㅋㅋ</div>
+        <div class="push"><div class="app">한끼배달</div><div><b>친구 초대 쿠폰 도착 🎉</b><span><span data-b="invite">5,000</span>원 쿠폰이 지급됐어요 (나)</span></div></div>
+        <div class="push"><div class="app">한끼배달</div><div><b>초대한 친구가 가입했어요</b><span><span data-b="invite">5,000</span>원 쿠폰이 지급됐어요 (친구)</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑦ 받는 방법 -->
+<section class="steps-sec">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">HOW TO</span>
+      <h2 class="sec-title display">1분이면 끝나요</h2>
+      <p class="sec-desc">복잡한 절차 없이 3단계로 혜택 받기</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><h4>한끼배달 앱 설치</h4><p>버튼을 누르면 스토어로 바로 이동해요</p></div>
+      <div class="step reveal"><h4>회원가입 (+추천인 코드)</h4><p>휴대폰 번호로 간편 가입, 코드는 선택사항</p></div>
+      <div class="step reveal"><h4>쿠폰함에서 확인</h4><p>첫 주문 쿠폰 · 한끼패스 체험이 자동 적용돼요</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ 신뢰 -->
+<section>
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">WHY 한끼배달</span>
+      <h2 class="sec-title display">먹고 싶은 건 여기 다 있어요</h2>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><strong>30만+</strong><span>입점 가게</span></div>
+      <div class="stat"><strong>2천만+</strong><span>누적 이용자</span></div>
+      <div class="stat"><strong>4.7★</strong><span>앱 평점</span></div>
+    </div>
+    <div class="cats reveal">
+      <div class="cat"><div>🍗</div>치킨</div>
+      <div class="cat"><div>🍕</div>피자</div>
+      <div class="cat"><div>🍜</div>중식</div>
+      <div class="cat"><div>🍣</div>회·일식</div>
+      <div class="cat"><div>🥘</div>찜·탕</div>
+      <div class="cat"><div>🍔</div>버거</div>
+      <div class="cat"><div>☕</div>카페</div>
+      <div class="cat"><div>🛒</div>한끼마트</div>
+    </div>
+    <div class="reviews reveal">
+      <div class="review"><div class="stars">★★★★★</div>오랜만에 다시 깔았는데 첫 주문 쿠폰으로 치킨 반값에 먹었어요<div class="who">30대 직장인 · 복귀 고객</div></div>
+      <div class="review"><div class="stars">★★★★★</div>한끼패스 무료 체험하면서 배달팁 걱정이 없어졌어요<div class="who">20대 대학생 · 신규 고객</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑨ FAQ / 유의사항 -->
+<section class="faq">
+  <div class="wrap faq-wrap">
+    <div class="center reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="sec-title display">궁금한 점이 있나요?</h2>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" type="button">예전에 가입했던 계정도 받을 수 있나요?</button>
+      <div class="faq-a"><p>네! 마지막 주문일로부터 1년이 지난 계정이라면 ‘복귀 고객’으로 웰컴 혜택 3종을 모두 받을 수 있어요.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" type="button">한끼패스 무료 체험 후 자동 결제되나요?</button>
+      <div class="faq-a"><p>체험 종료 후 월 <span data-b="club">3,990</span>원 정기결제로 전환돼요. 결제 3일 전 알림을 드리고, [마이페이지 &gt; 한끼패스]에서 언제든 해지할 수 있어요.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" type="button">추천인 코드는 언제 입력하나요?</button>
+      <div class="faq-a"><p>회원가입 화면에서만 입력할 수 있어요. 코드가 없다면 가입 후 내 코드로 친구를 초대해도 둘 다 <span data-b="invite">5,000</span>원을 받아요.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" type="button">쿠폰은 어디서 확인하나요?</button>
+      <div class="faq-a"><p>앱 [마이페이지 &gt; 쿠폰함]에서 확인할 수 있고, 결제 화면에서 자동 적용돼요.</p></div>
+    </div>
+    <div class="notice">
+      <h4>유의사항</h4>
+      <ul>
+        <li>이벤트 기간: <span data-b="period">2026.11.01 ~ 11.30</span> · 신규 가입 고객 및 최근 1년간 주문 이력이 없는 고객 대상</li>
+        <li>첫 주문 쿠폰(<span data-b="firstOrder">10,000</span>원)은 <span data-b="minOrder">15,000</span>원 이상 주문 시 사용 가능하며, 발급일로부터 7일간 유효합니다.</li>
+        <li>한끼패스 무료 체험은 1개월이며, 종료 후 월 <span data-b="club">3,990</span>원 정기결제로 전환됩니다(결제 3일 전 안내, 언제든 해지 가능).</li>
+        <li>친구 초대 쿠폰(각 <span data-b="invite">5,000</span>원)은 초대받은 친구의 가입 완료 후 양측에 지급되며, 지급 횟수에 제한이 있을 수 있습니다.</li>
+        <li>부정 가입 등 비정상적 방법으로 받은 혜택은 취소될 수 있으며, 이벤트는 사전 고지 후 변경·조기 종료될 수 있습니다.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ⑩ 마지막 CTA -->
+<section class="final" id="final">
+  <div class="wrap final-box">
+    <h2 class="sec-title display">지금 설치하면<br>오늘 저녁부터 할인!</h2>
+    <p class="sec-desc">가입 즉시 쿠폰함에 들어가는 웰컴 혜택 3종</p>
+    <div class="recap">
+      <span>첫 주문 <span data-b="firstOrder">10,000</span>원</span>
+      <span>한끼패스 첫 달 0원</span>
+      <span>친구 초대 각 <span data-b="invite">5,000</span>원</span>
+    </div>
+    <div class="qr-card desktop-only" data-cta="final_qr" data-cta-kind="qr">
+      <div class="qr-box js-qr"></div>
+      <div><b>휴대폰으로 QR을 찍어 설치하세요</b><p>총 <span data-b="total">18,990</span>원 혜택이 바로 쿠폰함에 들어가요.</p></div>
+    </div>
+    <a href="#" class="btn btn-primary js-download mobile-only" data-cta="final">총 <span data-b="total">18,990</span>원 혜택 받으러 가기 →</a>
+    <div class="store-row">
+      <a href="#" class="store-btn js-store" data-store="ios" data-cta="final_ios"><svg><use href="#i-apple"/></svg>App Store</a>
+      <a href="#" class="store-btn js-store" data-store="android" data-cta="final_android"><svg><use href="#i-play"/></svg>Google Play</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">한끼배달은 마케팅 실습용 가상 브랜드이며 실제 서비스가 아닙니다. 혜택 금액·조건은 실제와 다를 수 있습니다.</footer>
+
+<!-- ⑪ 하단 고정 CTA (모바일) -->
+<div class="sticky-cta" id="stickyCta">
+  <a href="#" class="btn btn-mint js-download" data-cta="sticky">🎁 앱 받고 <span data-b="total">18,990</span>원 혜택 받기</a>
+</div>
+
+<!-- QR 모달 (데스크톱) -->
+<div class="modal" id="qrModal" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
+  <div class="modal-box">
+    <button class="modal-close" type="button" aria-label="닫기">×</button>
+    <h3 id="qrTitle">휴대폰으로 설치하세요</h3>
+    <p>카메라로 QR을 찍으면 스토어로 이동해요</p>
+    <div class="qr-box js-qr"></div>
+    <div class="store-row">
+      <a href="#" class="store-btn js-store" data-store="ios" data-cta="modal_ios" style="background:var(--bg-soft)"><svg><use href="#i-apple"/></svg>App Store</a>
+      <a href="#" class="store-btn js-store" data-store="android" data-cta="modal_android" style="background:var(--bg-soft)"><svg><use href="#i-play"/></svg>Google Play</a>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- Amplitude Analytics: API 키는 build_site.py가 .env 값으로 치환 (비밀키는 페이지에 넣지 않음) -->
+<script src="https://cdn.jsdelivr.net/npm/@amplitude/analytics-browser@2.48.1/lib/scripts/amplitude-min.js"></script>
+<script>
+  (function () {
+    var KEY = '21ff3cfa5bc20c21ea8ea53ceeecd4e4';
+    if (!window.amplitude || KEY.indexOf('%%') === 0) return;
+    window.amplitude.init(KEY, {
+      autocapture: { pageViews: true, sessions: true, attribution: true, formInteractions: false, fileDownloads: false, elementInteractions: false }
+    });
+  })();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(function () {
+  /* ===== 설정: 혜택 금액은 여기 한 곳에서만 관리 → 페이지 전체에 자동 반영 ===== */
+  var CONFIG = {
+    benefits: { firstOrder: 10000, minOrder: 15000, club: 3990, invite: 5000 },
+    eventStart: '2026-11-01', eventEnd: '2026-11-30',
+    appStoreUrl:  'https://apps.apple.com/kr/app/REPLACE_APP_ID',
+    playStoreUrl: 'https://play.google.com/store/apps/details?id=REPLACE_PACKAGE',
+    oneLinkUrl:   '' // 원링크(AppsFlyer/Airbridge 등) 사용 시 입력 → OS 자동 분기 + QR에도 사용
+  };
+
+  var won = function (n) { return n.toLocaleString('ko-KR'); };
+  var b = CONFIG.benefits;
+  var fmtDate = function (s, short) { var p = s.split('-'); return short ? p[1] + '.' + p[2] : p.join('.'); };
+  var values = {
+    firstOrder: won(b.firstOrder), minOrder: won(b.minOrder), club: won(b.club), invite: won(b.invite),
+    total: won(b.firstOrder + b.club + b.invite),
+    period: fmtDate(CONFIG.eventStart) + ' ~ ' + fmtDate(CONFIG.eventEnd, true)
+  };
+  document.querySelectorAll('[data-b]').forEach(function (el) {
+    if (values[el.dataset.b] != null) el.textContent = values[el.dataset.b];
+  });
+
+  /* ===== D-day (실제 이벤트 종료일 기준) ===== */
+  var end = new Date(CONFIG.eventEnd + 'T23:59:59+09:00');
+  var days = Math.ceil((end - new Date()) / 86400000);
+  var dd = document.getElementById('dday'); if (days > 0) { dd.textContent = 'D-' + days; dd.hidden = false; }
+
+  var params = new URLSearchParams(location.search);
+  var src = (params.get('utm_source') || '').toLowerCase();
+
+  /* ===== 채널별 히어로 문구 ===== */
+  var badge = document.getElementById('heroBadge');
+  if (src === 'youtube') badge.textContent = '📺 영상 보고 오셨군요! 처음·1년 만에 오신 분 한정';
+  else if (src === 'inapp') badge.textContent = '🎮 출출할 때 딱! 처음·1년 만에 오신 분 한정';
+
+  /* ===== UTM·추천코드 유지 ===== */
+  var keep = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'ref'];
+  function withTracking(url) {
+    var u = new URL(url);
+    keep.forEach(function (k) { if (params.get(k)) u.searchParams.set(k, params.get(k)); });
+    return u.toString();
+  }
+
+  function track(name, data) {
+    window.dataLayer = window.dataLayer || [];
+    var props = Object.assign({ utm_source: src || 'direct', audience: 'customer', page: 'customer' }, data || {});
+    window.dataLayer.push(Object.assign({ event: name }, props));
+    if (window.amplitude && window.amplitude.track) window.amplitude.track(name, props);
+  }
+
+  /* ===== 기기 판별 → 스토어 / 데스크톱은 QR 모달 ===== */
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var isAndroid = /Android/i.test(ua);
+  var modal = document.getElementById('qrModal');
+
+  function goStore(store, cta) {
+    var url;
+    if (store === 'ios') url = CONFIG.appStoreUrl;
+    else if (store === 'android') url = CONFIG.playStoreUrl;
+    else if (CONFIG.oneLinkUrl) url = CONFIG.oneLinkUrl;
+    else url = isIOS ? CONFIG.appStoreUrl : isAndroid ? CONFIG.playStoreUrl : null;
+    if (!url) { modal.classList.add('open'); return; }
+    var dest = withTracking(url);
+    (window.__ctaFlushThen || function (fn) { fn(); })(function () { location.href = dest; });
+  }
+  document.querySelectorAll('.js-download').forEach(function (el) {
+    el.addEventListener('click', function (e) { e.preventDefault(); goStore('auto', el.dataset.cta); });
+  });
+  document.querySelectorAll('.js-store').forEach(function (el) {
+    el.addEventListener('click', function (e) { e.preventDefault(); goStore(el.dataset.store, el.dataset.cta); });
+  });
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal || e.target.classList.contains('modal-close')) modal.classList.remove('open');
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') modal.classList.remove('open'); });
+
+  /* ===== QR (데스크톱 설치 경로) ===== */
+  var qrTarget = withTracking(CONFIG.oneLinkUrl || location.href.split('#')[0]);
+  document.querySelectorAll('.js-qr').forEach(function (el) {
+    if (window.QRCode) new QRCode(el, { text: qrTarget, width: 240, height: 240, colorDark: '#1D1D1F', correctLevel: QRCode.CorrectLevel.M });
+    else el.closest('.qr-card') && (el.closest('.qr-card').style.display = 'none');
+  });
+
+  /* ===== 추천인 코드: ?ref= 로 들어오면 코드 표시, 아니면 안내 ===== */
+  var ref = (params.get('ref') || '').replace(/[^0-9a-z]/gi, '').toUpperCase().slice(0, 16);
+  if (ref) {
+    document.getElementById('refHas').hidden = false;
+    document.getElementById('refNone').hidden = true;
+    document.getElementById('refCode').textContent = ref;
+    document.getElementById('inviteCta').innerHTML = '코드 복사하고 앱 설치하기';
+  }
+  function copyRef(after) {
+    var done = function () { showToast('추천인 코드가 복사됐어요!'); track('ref_copy'); if (after) setTimeout(after, 600); };
+    if (navigator.clipboard) navigator.clipboard.writeText(ref).then(done, done); else done();
+  }
+  document.getElementById('copyBtn').addEventListener('click', function () { copyRef(); });
+  if (ref) document.getElementById('inviteCta').addEventListener('click', function (e) {
+    e.stopImmediatePropagation(); e.preventDefault(); copyRef(function () { goStore('auto', 'invite_copy'); });
+  }, true);
+
+  /* ===== FAQ ===== */
+  document.querySelectorAll('.faq-item').forEach(function (item) {
+    item.querySelector('.faq-q').addEventListener('click', function () {
+      var a = item.querySelector('.faq-a'), open = item.classList.toggle('open');
+      a.style.maxHeight = open ? a.scrollHeight + 'px' : 0;
+    });
+  });
+
+  /* ===== 하단 고정 CTA: 히어로·마지막 CTA가 보일 땐 숨김 ===== */
+  var sticky = document.getElementById('stickyCta');
+  var heroOut = false, finalIn = false;
+  var upd = function () { sticky.classList.toggle('show', heroOut && !finalIn); };
+  new IntersectionObserver(function (e) { heroOut = !e[0].isIntersecting; upd(); }).observe(document.querySelector('.hero-cta'));
+  new IntersectionObserver(function (e) { finalIn = e[0].isIntersecting; upd(); }).observe(document.getElementById('final'));
+
+  /* ===== 등장 애니메이션 + 섹션 도달 트래킹 ===== */
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  ['b1', 'b2', 'b3'].forEach(function (id) {
+    var seen = false;
+    new IntersectionObserver(function (e) {
+      if (e[0].isIntersecting && !seen) { seen = true; track('section_view', { section: id }); }
+    }, { threshold: 0.4 }).observe(document.getElementById(id));
+  });
+
+  var toastEl = document.getElementById('toast'), tt;
+  function showToast(m) { toastEl.textContent = m; toastEl.classList.add('show'); clearTimeout(tt); tt = setTimeout(function () { toastEl.classList.remove('show'); }, 1800); }
+
+  track('landing_view');
+})();
+</script>
+<!-- CTA 노출·클릭 수집: [data-cta] 요소마다 cta_impression(화면 50% 이상 노출, 페이지뷰당 1회) / cta_click 기록 -->
+<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  var PAGE = document.body.getAttribute('data-page') || 'index';
+  var IS_TEST = params.get('test') === '1'; // 테스트 모드: 이벤트에 is_test 표시 + 실제 이동 생략
+  var base = {
+    page: PAGE,
+    audience: PAGE === 'index' ? 'index' : PAGE,
+    utm_source: params.get('utm_source') || 'direct',
+    utm_campaign: params.get('utm_campaign') || undefined,
+    viewport: innerWidth < 768 ? 'mobile' : innerWidth < 1024 ? 'tablet' : 'desktop'
+  };
+  if (IS_TEST) base.is_test = true;
+
+  function info(el) {
+    var href = el.getAttribute('href') || '';
+    var kind = el.getAttribute('data-cta-kind') ||
+      (el.classList.contains('js-store') ? 'store' : el.classList.contains('js-download') ? 'download' :
+       href.indexOf('tel:') === 0 ? 'tel' : el.tagName === 'BUTTON' ? 'button' : 'link');
+    return Object.assign({
+      cta_id: el.getAttribute('data-cta'),
+      cta_kind: kind,
+      cta_label: (el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60),
+      cta_store: el.getAttribute('data-store') || undefined
+    }, base);
+  }
+  function send(name, props) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(Object.assign({ event: name }, props));
+    if (window.amplitude && window.amplitude.track) return window.amplitude.track(name, props);
+  }
+  window.__ctaSend = send;
+
+  /* 노출: 50% 이상 보이면 1회 (sticky·모달처럼 나중에 보이는 CTA도 그 시점에 기록) */
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      var el = en.target;
+      if (!en.isIntersecting || seen.has(el)) return;
+      var r = el.getBoundingClientRect();
+      if (r.width === 0 || r.height === 0) return; // display:none 등 실제로 안 보이는 경우 제외
+      seen.add(el);
+      io.unobserve(el);
+      send('cta_impression', info(el));
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-cta]').forEach(function (el) { io.observe(el); });
+
+  /* 클릭: 캡처 단계에서 먼저 기록 → 페이지를 떠나는 CTA는 전송 후 이동 */
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('[data-cta]');
+    if (!el) return;
+    var props = info(el);
+    if (IS_TEST) {
+      e.preventDefault(); e.stopImmediatePropagation();
+      send('cta_click', props);
+      console.info('[CTA 테스트] click', props.cta_id);
+      return;
+    }
+    var res = send('cta_click', props);
+    var href = el.getAttribute('href') || '';
+    var leaves = href && href.charAt(0) !== '#' && href.indexOf('tel:') !== 0 && !el.classList.contains('js-download') && !el.classList.contains('js-store');
+    if (leaves && res && res.promise && !(e.ctrlKey || e.metaKey || e.shiftKey)) {
+      e.preventDefault();
+      var go = function () { location.href = href; };
+      Promise.race([res.promise, new Promise(function (r) { setTimeout(r, 600); })]).then(go, go);
+    }
+  }, true);
+
+  /* 스토어 이동 CTA(js-download/js-store)는 페이지 스크립트가 호출: 전송 완료(최대 0.6초) 후 이동 */
+  window.__ctaFlushThen = function (fn) {
+    var done = false, go = function () { if (!done) { done = true; fn(); } };
+    try { window.amplitude.flush().promise.then(go, go); } catch (err) { go(); }
+    setTimeout(go, 600);
+  };
+})();
+</script>
+</body>
+</html>

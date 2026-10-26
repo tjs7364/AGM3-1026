@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>한끼배달 사장님 입점</title>
+<meta name="description" content="한끼배달 처음 시작하는 사장님께: 신규 가게 상위노출, 배달비 지원, 광고비 지원, 중개수수료 할인. 한끼배달 사장님 앱에서 바로 입점하세요.">
+<meta property="og:title" content="사장님, 한끼배달 첫 장사는 혜택 받고 시작하세요">
+<meta property="og:description" content="상위노출 30일 · 배달비 건당 1,000원 지원 · 광고비 10만원 · 수수료 50% 할인">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mint: #F45A2A;
+    --mint-dark: #C9441A;
+    --mint-light: #FFEDE5;
+    --navy: #2B2321;
+    --navy-2: #3B302C;
+    --ink: #1D1D1F;
+    --ink-sub: #555B61;
+    --ink-mute: #8A9096;
+    --bg: #FFFFFF;
+    --bg-soft: #F6F8F9;
+    --yellow: #FFD84D;
+    --red: #FF5A5A;
+    --line: #E5E8EB;
+    --radius: 20px;
+    --shadow: 0 10px 30px rgba(29, 29, 31, .08);
+    --gutter: 20px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink); background: var(--bg); line-height: 1.55;
+    -webkit-font-smoothing: antialiased; word-break: keep-all; overflow-x: hidden;
+  }
+  svg { display: block; }
+  .display { font-family: 'Do Hyeon', sans-serif; font-weight: 400; letter-spacing: -0.5px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 var(--gutter); }
+  section { padding: 56px 0; }
+  .eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 700; color: var(--mint-dark);
+    background: var(--mint-light); padding: 6px 12px; border-radius: 999px; margin-bottom: 14px;
+  }
+  .sec-title { font-size: clamp(26px, 7.5vw, 44px); line-height: 1.25; margin-bottom: 10px; }
+  .sec-desc { color: var(--ink-sub); font-size: 15px; }
+  .hl { color: var(--mint-dark); }
+  .center { text-align: center; }
+  [hidden] { display: none !important; }
+
+  /* ---------- 버튼 ---------- */
+  .btn {
+    display: block; width: 100%; padding: 17px 16px; line-height: 1.4; border: 0; border-radius: 16px; cursor: pointer;
+    font-family: inherit; font-size: clamp(15px, 4.6vw, 18px); font-weight: 900; text-decoration: none; text-align: center;
+    transition: transform .15s ease;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn-primary { background: var(--ink); color: #fff; box-shadow: 0 8px 20px rgba(0,0,0,.18); }
+  .btn-mint { background: var(--mint); color: #fff; box-shadow: 0 8px 20px rgba(244,90,42,.35); }
+  .btn-line { background: transparent; color: inherit; border: 2px solid currentColor; box-shadow: none; padding: 13px 16px; font-size: 15px; }
+  .inline-cta { margin-top: 28px; max-width: 520px; }
+  .inline-cta.center-box { margin-left: auto; margin-right: auto; }
+  .desktop-only { display: none !important; }
+
+  /* ---------- ① 헤더 ---------- */
+  .header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: rgba(43,35,33,.97); backdrop-filter: blur(8px); }
+  .header .wrap { height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .logo { font-family: 'Do Hyeon', sans-serif; font-size: 22px; color: #fff; white-space: nowrap; }
+  .logo span { color: var(--mint); }
+  .header-btn {
+    background: var(--mint); color: #fff; font-weight: 700; font-size: 13px;
+    padding: 8px 14px; border-radius: 999px; text-decoration: none; white-space: nowrap;
+  }
+
+  /* ---------- ② 히어로 ---------- */
+  .hero { background: linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%); color: #fff; padding: 28px 0 44px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; width: 320px; height: 320px; border-radius: 50%; background: rgba(244,90,42,.18); top: -120px; right: -100px; }
+  .hero-grid { position: relative; z-index: 1; text-align: center; }
+  .hero-badge {
+    display: inline-block; background: var(--mint); color: #fff;
+    font-weight: 700; font-size: 13px; padding: 6px 14px; border-radius: 999px; margin-bottom: 14px;
+  }
+  .hero-title { font-size: clamp(30px, 10vw, 58px); line-height: 1.18; margin-bottom: 12px; }
+  .hero-title em { font-style: normal; color: var(--mint); }
+  .hero-sub { font-size: clamp(14px, 4.2vw, 18px); color: rgba(255,255,255,.85); }
+  .hero-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 16px 0 20px; }
+  .hero-chips > span { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); border-radius: 999px; padding: 5px 11px; font-size: 13px; font-weight: 700; }
+  .hero-chips b { color: var(--yellow); }
+  .event-period { margin-top: 12px; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 6px; flex-wrap: wrap; color: rgba(255,255,255,.85); }
+  .event-period b { background: rgba(255,255,255,.12); padding: 2px 8px; border-radius: 6px; font-variant-numeric: tabular-nums; color: #fff; }
+  .event-period .dday { background: var(--red); }
+  .hero-visual { margin-top: 30px; }
+
+  /* 히어로 이미지: 사장님 앱 대시보드 목업 (혜택 4종이 적용된 모습) */
+  .phone { width: min(280px, 82vw); margin: 0 auto; background: #0B0F14; border-radius: 34px; padding: 10px; box-shadow: 0 24px 50px rgba(0,0,0,.4); position: relative; }
+  .phone-screen { background: #F4F6F7; border-radius: 26px; overflow: hidden; color: var(--ink); text-align: left; }
+  .ps-top { background: #fff; padding: 12px 14px 10px; display: flex; justify-content: space-between; align-items: center; }
+  .ps-top b { font-size: 14px; white-space: nowrap; }
+  .ps-top { gap: 6px; }
+  .ps-top span { font-size: 11px; color: #fff; background: var(--mint); padding: 2px 8px; border-radius: 999px; font-weight: 700; }
+  .ps-body { padding: 10px; display: grid; gap: 8px; }
+  .order-alert { background: var(--mint); color: #fff; border-radius: 12px; padding: 10px 12px; display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; animation: pulse 1.8s ease-in-out infinite; }
+  .order-alert svg { width: 20px; height: 20px; flex: 0 0 20px; }
+  @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(244,90,42,.5); } 50% { box-shadow: 0 0 0 6px rgba(244,90,42,0); } }
+  .sales { background: #fff; border-radius: 12px; padding: 10px 12px; }
+  .sales small { font-size: 11px; color: var(--ink-mute); }
+  .sales b { display: block; font-family: 'Do Hyeon', sans-serif; font-size: 24px; font-weight: 400; }
+  .sales .bars { display: flex; align-items: flex-end; gap: 4px; height: 34px; margin-top: 4px; }
+  .sales .bars i { flex: 1; background: var(--mint-light); border-radius: 3px 3px 0 0; }
+  .sales .bars i:last-child { background: var(--mint); }
+  .applied { background: #fff; border-radius: 12px; padding: 8px 12px; display: grid; gap: 5px; }
+  .applied small { font-size: 11px; color: var(--ink-mute); }
+  .applied div { display: flex; justify-content: space-between; gap: 6px; font-size: 12px; }
+  .applied div > span:first-child::before { content: '✔ '; color: var(--mint-dark); font-weight: 900; }
+  .applied div > span:last-child { font-weight: 700; color: var(--mint-dark); white-space: nowrap; }
+
+  .qr-card { background: #fff; color: var(--ink); border-radius: 20px; padding: 16px; gap: 16px; align-items: center; text-align: left; }
+  .qr-box { flex: 0 0 120px; width: 120px; height: 120px; display: grid; place-items: center; }
+  .qr-box img, .qr-box canvas { width: 120px !important; height: 120px !important; }
+  .qr-card b { font-size: 17px; display: block; }
+  .qr-card p { font-size: 13px; color: var(--ink-sub); }
+
+  /* ---------- ③ 고민 → 해결 ---------- */
+  .pain { background: var(--bg-soft); }
+  .pain-list { display: grid; gap: 12px; margin-top: 24px; }
+  .pain-card { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; text-decoration: none; color: inherit; display: block; }
+  .pain-q { padding: 14px 18px; font-size: 14px; color: var(--ink-sub); border-bottom: 1px dashed var(--line); }
+  .pain-q b { color: var(--ink); }
+  .pain-a { padding: 14px 18px; display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: center; }
+  .pain-ic { width: 44px; height: 44px; border-radius: 12px; background: var(--mint-light); display: grid; place-items: center; }
+  .pain-ic svg { width: 26px; height: 26px; }
+  .pain-a h3 { font-size: 15px; line-height: 1.35; }
+  .pain-a .amt { font-family: 'Do Hyeon', sans-serif; font-size: 22px; color: var(--mint-dark); display: block; line-height: 1.2; }
+
+  /* ---------- ④ 혜택 상세 ---------- */
+  .feature { display: grid; gap: 28px; align-items: center; }
+  .check-list { list-style: none; margin-top: 18px; display: grid; gap: 8px; }
+  .check-list li { position: relative; padding-left: 24px; font-size: 15px; color: var(--ink-sub); }
+  .check-list li::before { content: '✔'; position: absolute; left: 0; color: var(--mint); font-weight: 900; }
+  .alt { background: var(--bg-soft); }
+  .mock { background: #fff; border-radius: 22px; box-shadow: var(--shadow); padding: 16px; max-width: 440px; width: 100%; margin: 0 auto; }
+  .mock-title { font-size: 13px; color: var(--ink-mute); margin-bottom: 10px; display: flex; justify-content: space-between; }
+
+  /* 상위노출: 고객 앱 가게 목록 */
+  .store { display: grid; grid-template-columns: 52px 1fr; gap: 10px; align-items: center; padding: 10px; border-radius: 14px; }
+  .store + .store { margin-top: 6px; }
+  .store .thumb { width: 52px; height: 52px; border-radius: 12px; display: grid; place-items: center; font-size: 26px; background: var(--bg-soft); }
+  .store b { font-size: 14px; display: block; }
+  .store small { font-size: 12px; color: var(--ink-mute); }
+  .store.mine { background: var(--mint-light); outline: 2px solid var(--mint); }
+  .store.mine .thumb { background: #fff; }
+  .store.dim { opacity: .45; }
+  .tag-new { display: inline-block; background: var(--red); color: #fff; font-size: 10px; font-weight: 900; padding: 1px 6px; border-radius: 4px; margin-left: 4px; vertical-align: 2px; }
+  .section-label { font-size: 13px; font-weight: 900; margin: 2px 0 8px; }
+
+  /* 비교 막대 (배달비 / 수수료) */
+  .compare { display: grid; gap: 14px; }
+  .cmp-row small { display: flex; justify-content: space-between; font-size: 13px; color: var(--ink-sub); margin-bottom: 4px; }
+  .cmp-row small b { color: var(--ink); }
+  .cmp-bar { height: 28px; border-radius: 8px; background: var(--bg-soft); overflow: hidden; }
+  .cmp-bar i { display: block; height: 100%; border-radius: 8px; background: #C9CED3; }
+  .cmp-row.after .cmp-bar i { background: var(--mint); }
+  .cmp-row.after small b { color: var(--mint-dark); }
+  .save-pill { margin-top: 14px; background: var(--navy); color: #fff; border-radius: 12px; padding: 12px 14px; display: flex; justify-content: space-between; gap: 8px; font-size: 14px; flex-wrap: wrap; }
+  .save-pill b { color: var(--yellow); font-size: 16px; }
+
+  /* 광고비 크레딧 카드 */
+  .credit {
+    border-radius: 22px; padding: 22px; color: #fff; position: relative; overflow: hidden; max-width: 440px; margin: 0 auto;
+    background: linear-gradient(135deg, #F45A2A 0%, #C9441A 60%, #9A3212 100%); box-shadow: 0 20px 40px rgba(20,146,141,.35);
+  }
+  .credit::after { content: ''; position: absolute; width: 180px; height: 180px; border-radius: 50%; background: rgba(255,255,255,.1); right: -50px; top: -60px; }
+  .credit small { font-size: 12px; opacity: .9; }
+  .credit .won { font-family: 'Do Hyeon', sans-serif; font-size: clamp(36px, 11vw, 52px); line-height: 1.1; color: var(--yellow); }
+  .credit p { font-size: 13px; opacity: .9; }
+  .ad-chart { margin-top: 14px; background: #fff; border-radius: 16px; padding: 14px 16px; max-width: 440px; margin-left: auto; margin-right: auto; box-shadow: var(--shadow); }
+  .ad-chart small { font-size: 12px; color: var(--ink-mute); }
+  .ad-chart .bars { display: flex; align-items: flex-end; gap: 8px; height: 80px; margin-top: 8px; }
+  .ad-chart .bars div { flex: 1; text-align: center; font-size: 11px; color: var(--ink-mute); }
+  .ad-chart .bars i { display: block; background: #D7DCE0; border-radius: 6px 6px 0 0; margin-bottom: 4px; }
+  .ad-chart .bars div.on i { background: var(--mint); }
+
+  /* ---------- ⑤ 절감액 계산기 ---------- */
+  .calc-sec { background: var(--navy); color: #fff; }
+  .calc-sec .eyebrow { background: rgba(255,216,77,.18); color: var(--yellow); }
+  .calc-sec .sec-desc { color: rgba(255,255,255,.75); }
+  .calc { margin-top: 24px; display: grid; gap: 16px; }
+  .calc-input { background: rgba(255,255,255,.06); border-radius: 18px; padding: 18px; display: grid; gap: 18px; }
+  .calc-input label { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 8px; }
+  .calc-input label b { color: var(--mint); font-size: 16px; }
+  .calc-input input[type=range] { width: 100%; accent-color: var(--mint); height: 28px; }
+  .calc-out { background: #fff; color: var(--ink); border-radius: 18px; padding: 18px; }
+  .calc-out .row { display: flex; justify-content: space-between; gap: 8px; font-size: 14px; padding: 4px 0; color: var(--ink-sub); }
+  .calc-out .row b { color: var(--ink); white-space: nowrap; }
+  .calc-out .total { border-top: 1px dashed var(--line); margin-top: 8px; padding-top: 10px; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .calc-out .total span { font-weight: 900; }
+  .calc-out .total b { font-family: 'Do Hyeon', sans-serif; font-weight: 400; font-size: clamp(28px, 9vw, 40px); color: var(--mint-dark); }
+  .calc-out small { display: block; font-size: 11px; color: var(--ink-mute); margin-top: 6px; }
+
+  /* ---------- ⑥ 성장 지원 ---------- */
+  .support-grid { display: grid; gap: 12px; margin-top: 24px; }
+  .support { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; display: grid; grid-template-columns: 48px 1fr; gap: 14px; align-items: start; align-content: start; background: #fff; }
+  .support .ic { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; }
+  .support .ic svg { width: 28px; height: 28px; }
+  .support h3 { font-size: 16px; }
+  .support .kind { font-size: 11px; font-weight: 700; color: var(--mint-dark); }
+  .support p { font-size: 13px; color: var(--ink-sub); margin-top: 2px; }
+  .support .meta { margin-top: 8px; font-size: 12px; background: var(--bg-soft); border-radius: 8px; padding: 6px 10px; color: var(--ink-sub); }
+  .support .meta b { color: var(--ink); }
+
+  .hero-plus { font-size: 13px; color: rgba(255,255,255,.75); margin: -8px 0 18px; }
+  .hero-plus b { color: #fff; }
+  .recap-plus { background: rgba(255,255,255,.08); border-radius: 12px; padding: 12px 14px; font-size: 13px; color: rgba(255,255,255,.85); margin: -10px 0 22px; text-align: left; }
+  .recap-plus b { color: var(--yellow); }
+  .schedule { margin-top: 20px; border-radius: var(--radius); background: var(--navy); color: #fff; padding: 18px; max-width: 760px; margin-left: auto; margin-right: auto; }
+  .sch-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+  .sch-head span { font-size: 11px; color: rgba(255,255,255,.6); }
+  .sch-row { display: grid; grid-template-columns: 56px 1fr; gap: 12px; align-items: center; padding: 10px 0; border-top: 1px solid rgba(255,255,255,.1); }
+  .sch-row .date { background: #fff; color: var(--ink); border-radius: 12px; text-align: center; font-family: 'Do Hyeon', sans-serif; font-size: 22px; line-height: 1.05; padding: 6px 0; }
+  .sch-row .date small { display: block; font-family: 'Noto Sans KR', sans-serif; font-size: 10px; color: var(--ink-mute); }
+  .sch-row b { display: block; font-size: 14px; }
+  .sch-row span { font-size: 12px; color: rgba(255,255,255,.7); }
+  .sch-row em { font-style: normal; color: var(--yellow); font-weight: 700; }
+
+  /* ---------- ⑦ 입점 3단계 ---------- */
+  .steps-sec { background: var(--mint-light); }
+  .steps { margin-top: 26px; display: grid; gap: 14px; counter-reset: step; }
+  .step { background: #fff; border-radius: var(--radius); padding: 18px 18px 18px 68px; position: relative; box-shadow: var(--shadow); }
+  .step::before {
+    counter-increment: step; content: counter(step); position: absolute; left: 18px; top: 18px;
+    width: 34px; height: 34px; border-radius: 50%; background: var(--mint); color: #fff; display: grid; place-items: center; font-weight: 900;
+  }
+  .step h4 { font-size: 16px; }
+  .step p { font-size: 13px; color: var(--ink-sub); }
+  .docs { margin-top: 18px; background: #fff; border-radius: 16px; padding: 14px 16px; font-size: 13px; color: var(--ink-sub); }
+  .docs b { color: var(--ink); }
+
+  /* ---------- ⑧ 신뢰 ---------- */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 26px; }
+  .stat { background: var(--bg-soft); border-radius: 16px; padding: 16px 4px; text-align: center; }
+  .stat strong { display: block; font-family: 'Do Hyeon', sans-serif; font-size: clamp(20px, 6.5vw, 32px); color: var(--mint-dark); font-weight: 400; }
+  .stat span { font-size: 12px; color: var(--ink-sub); }
+  .reviews { margin-top: 22px; display: grid; gap: 10px; }
+  .review { border: 1px solid var(--line); border-radius: 16px; padding: 16px; font-size: 14px; }
+  .review .who { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .review .avatar { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; font-size: 18px; background: var(--mint-light); }
+  .review .who b { font-size: 14px; display: block; }
+  .review .who small { font-size: 12px; color: var(--ink-mute); }
+  .review .result { display: inline-block; margin-top: 8px; background: var(--mint-light); color: var(--mint-dark); font-size: 12px; font-weight: 700; padding: 3px 8px; border-radius: 6px; }
+
+  /* ---------- ⑨ FAQ ---------- */
+  .faq { background: var(--bg-soft); }
+  .faq-wrap { max-width: 760px; margin: 0 auto; }
+  .faq-item { background: #fff; border-radius: 14px; margin-top: 10px; overflow: hidden; }
+  .faq-q { width: 100%; text-align: left; background: none; border: 0; padding: 16px 44px 16px 16px; font-family: inherit; font-size: 15px; font-weight: 700; color: var(--ink); cursor: pointer; position: relative; }
+  .faq-q::after { content: '+'; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 22px; color: var(--mint); transition: transform .2s; }
+  .faq-item.open .faq-q::after { transform: translateY(-50%) rotate(45deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height .25s ease; }
+  .faq-a p { padding: 0 16px 16px; font-size: 14px; color: var(--ink-sub); }
+  .notice { margin-top: 28px; font-size: 12px; color: var(--ink-mute); }
+  .notice h4 { font-size: 13px; color: var(--ink-sub); margin-bottom: 6px; }
+  .notice li { margin-left: 16px; margin-bottom: 3px; }
+
+  /* ---------- ⑩ 마지막 CTA ---------- */
+  .final { background: linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%); color: #fff; text-align: center; }
+  .final .sec-desc { color: rgba(255,255,255,.85); margin-bottom: 18px; }
+  .final-box { max-width: 560px; margin: 0 auto; }
+  .recap { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 22px; }
+  .recap > div { background: rgba(255,255,255,.08); border-radius: 12px; padding: 10px 6px; font-size: 12px; color: rgba(255,255,255,.8); }
+  .recap > div b { display: block; font-size: 15px; color: var(--mint); }
+  .store-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+  .store-btn { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 50px; background: #fff; color: var(--ink); border-radius: 14px; text-decoration: none; font-weight: 700; font-size: 14px; }
+  .store-btn svg { width: 18px; height: 18px; }
+  .final .btn-line { margin-top: 12px; color: #fff; }
+  .footer { padding: 24px 20px 120px; font-size: 11px; color: var(--ink-mute); text-align: center; }
+
+  /* ---------- ⑪ 하단 고정 CTA ---------- */
+  .sticky-cta {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    padding: 12px var(--gutter) calc(12px + env(safe-area-inset-bottom));
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #fff 32%);
+    transform: translateY(110%); transition: transform .3s ease;
+  }
+  .sticky-cta.show { transform: none; }
+  .sticky-cta .btn { max-width: 520px; margin: 0 auto; }
+
+  /* ---------- QR 모달 ---------- */
+  .modal { position: fixed; inset: 0; z-index: 80; background: rgba(0,0,0,.5); display: none; place-items: center; padding: 20px; }
+  .modal.open { display: grid; }
+  .modal-box { background: #fff; border-radius: 24px; padding: 28px; text-align: center; max-width: 340px; width: 100%; position: relative; }
+  .modal-box h3 { font-size: 20px; margin-bottom: 4px; }
+  .modal-box p { font-size: 14px; color: var(--ink-sub); margin-bottom: 16px; }
+  .modal-box .qr-box { margin: 0 auto 16px; width: 160px; height: 160px; }
+  .modal-box .qr-box img, .modal-box .qr-box canvas { width: 160px !important; height: 160px !important; }
+  .modal-box .store-btn { background: var(--bg-soft); }
+  .modal-close { position: absolute; right: 14px; top: 10px; background: none; border: 0; font-size: 26px; cursor: pointer; color: var(--ink-mute); }
+
+  .reveal { }
+
+  /* ========== 반응형 ========== */
+  @media (max-width: 360px) {
+    :root { --gutter: 16px; }
+    section { padding: 44px 0; }
+    .hero { padding-top: 20px; }
+    .hero-badge { font-size: 11px; padding: 5px 10px; }
+    .hero-chips > span { font-size: 11px; padding: 4px 8px; }
+    .logo { font-size: 19px; }
+    .header-btn { font-size: 12px; padding: 7px 10px; }
+    .phone { width: 228px; border-radius: 28px; padding: 8px; }
+    .ps-body { padding: 8px; gap: 6px; }
+    .applied div { font-size: 11px; }
+    .event-period { font-size: 11px; gap: 4px; }
+    .store-row { grid-template-columns: 1fr; }
+    .step { padding-left: 60px; }
+    .step::before { left: 14px; }
+    .support { grid-template-columns: 1fr; }
+    .stat span { font-size: 11px; }
+    .mock { padding: 12px; }
+    .mock-title { font-size: 11px; }
+    .recap { grid-template-columns: 1fr 1fr; }
+  }
+  @media (min-width: 700px) {
+    section { padding: 80px 0; }
+    .pain-list { grid-template-columns: 1fr 1fr; }
+    .support-grid { grid-template-columns: 1fr 1fr; }
+    .steps { grid-template-columns: repeat(3, 1fr); }
+    .step { padding: 64px 18px 20px; text-align: center; }
+    .step::before { left: 50%; transform: translateX(-50%); }
+    .reviews { grid-template-columns: 1fr 1fr; }
+    .calc { grid-template-columns: 1fr 1fr; align-items: stretch; }
+    .recap { grid-template-columns: repeat(4, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    :root { --gutter: 32px; }
+    .hero { padding: 64px 0 72px; }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; text-align: left; }
+    .hero-chips, .event-period { justify-content: flex-start; }
+    .hero-visual { margin-top: 0; }
+    .phone { width: 320px; }
+    .applied div { font-size: 13px; }
+    .mobile-only { display: none !important; }
+    .desktop-only { display: block !important; }
+    .qr-card.desktop-only { display: flex !important; }
+    .hero .qr-card { margin-top: 8px; max-width: 480px; }
+    .feature { grid-template-columns: 1fr 1fr; gap: 64px; }
+    .feature.reverse .feature-visual { order: -1; }
+    .pain-list { grid-template-columns: repeat(4, 1fr); }
+    .support-grid { grid-template-columns: repeat(4, 1fr); }
+    .support { grid-template-columns: 1fr; }
+    .sticky-cta { display: none; }
+    .final .qr-card { max-width: 480px; margin: 0 auto 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .order-alert { animation: none; }
+  }
+</style>
+</head>
+<body data-page="owner">
+<!-- SVG 아이콘 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-top" viewBox="0 0 32 32"><rect x="5" y="17" width="6" height="10" rx="1.5" fill="#FFD3C2"/><rect x="13" y="11" width="6" height="16" rx="1.5" fill="#FF9C7A"/><rect x="21" y="5" width="6" height="22" rx="1.5" fill="#F45A2A"/><path d="M24 2l3 3h-6z" fill="#FF5A5A"/></symbol>
+    <symbol id="i-scooter" viewBox="0 0 32 32"><circle cx="8" cy="23" r="4" fill="none" stroke="#2B2321" stroke-width="2.4"/><circle cx="24" cy="23" r="4" fill="none" stroke="#2B2321" stroke-width="2.4"/><path d="M8 23h10l4-10h-5M22 13l2 10" fill="none" stroke="#F45A2A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="5" y="11" width="9" height="7" rx="1.5" fill="#F45A2A"/></symbol>
+    <symbol id="i-mega" viewBox="0 0 32 32"><path d="M5 13h5l12-7v20l-12-7H5z" fill="#F45A2A"/><rect x="9" y="19" width="4" height="8" rx="1.5" fill="#2B2321"/><path d="M26 12c1.5 1 1.5 7 0 8" stroke="#FFB800" stroke-width="2.2" fill="none" stroke-linecap="round"/></symbol>
+    <symbol id="i-fee" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="#F45A2A"/><path d="M11 21l10-10" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="12" r="2" fill="#fff"/><circle cx="20" cy="20" r="2" fill="#fff"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0-6 6v4l-2 3h16l-2-3V9a6 6 0 0 0-6-6zM10 19a2 2 0 0 0 4 0" fill="#fff"/></symbol>
+    <symbol id="i-school" viewBox="0 0 32 32"><path d="M2 12l14-7 14 7-14 7z" fill="#F45A2A"/><path d="M8 15v6c0 2 4 4 8 4s8-2 8-4v-6l-8 4z" fill="#2B2321"/><path d="M28 13v8" stroke="#FFB800" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-booth" viewBox="0 0 32 32"><path d="M4 10h24l-2-5H6z" fill="#FF5A5A"/><path d="M4 10c0 2 2 3 4 3s4-1 4-3c0 2 2 3 4 3s4-1 4-3c0 2 2 3 4 3s4-1 4-3" fill="#FFB800"/><rect x="6" y="13" width="20" height="14" rx="1.5" fill="#2B2321"/><rect x="12" y="18" width="8" height="9" fill="#F45A2A"/></symbol>
+    <symbol id="i-chef" viewBox="0 0 32 32"><path d="M9 17a5 5 0 0 1 1-10 6 6 0 0 1 12 0 5 5 0 0 1 1 10z" fill="#fff" stroke="#2B2321" stroke-width="2"/><rect x="10" y="17" width="12" height="9" rx="1.5" fill="#F45A2A"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 32 32"><path d="M4 7a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-8l-5 4v-4H7a3 3 0 0 1-3-3z" fill="#F45A2A"/><path d="M14 22h8l5 4v-4h0a3 3 0 0 0 1-2v-7a3 3 0 0 0-2-3" fill="none" stroke="#2B2321" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-apple" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8 2.1-1.2 2.9-2.4c.9-1.4 1.3-2.7 1.3-2.8 0 0-2.5-1-2.5-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path fill="#F45A2A" d="M4 3.5v17l9-8.5z"/><path fill="#FFB800" d="M13 12l3 2.8 4-2.3c.7-.4.7-1 0-1.4l-4-2.3z"/><path fill="#FF5A5A" d="M4 20.5l9-8.5 3 2.8L5.2 21c-.4.2-.9 0-1.2-.5z"/><path fill="#1D9BF0" d="M4 3.5c.3-.5.8-.7 1.2-.5L16 9.2 13 12z"/></symbol>
+  </defs>
+</svg>
+
+<!-- ① 헤더 -->
+<header class="header">
+  <div class="wrap">
+    <span class="logo">한끼배달<span> 사장님</span></span>
+    <a href="#" class="header-btn js-download" data-cta="header">앱 받고 입점하기</a>
+  </div>
+</header>
+
+<!-- ② 히어로 -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="hero-badge" id="heroBadge">🏪 한끼배달 처음 시작하는 사장님 전용</span>
+      <h1 class="hero-title display">사장님 첫 장사,<br><em>한끼배달</em>이 밀어드려요</h1>
+      <p class="hero-sub">노출 · 배달비 · 광고비 · 수수료, 입점 초기 부담을 덜어드려요</p>
+      <div class="hero-chips">
+        <span>상위노출 <b><span data-b="topDays">30</span>일</b></span>
+        <span>배달비 <b>건당 <span data-b="delivery">1,000</span>원</b>·<span data-b="months">3</span>개월</span>
+        <span>광고비 <b><span data-b="adCreditMan">10</span>만원</b></span>
+        <span>수수료 <b><span data-b="feeDiscount">50</span>% 할인</b>·<span data-b="months">3</span>개월</span>
+      </div>
+      <p class="hero-plus">+ 입점 후 성장 지원 <b>무료 교육 · 박람회 상담 · 사장님 커뮤니티</b></p>
+
+      <div class="hero-cta mobile-only">
+        <a href="#" class="btn btn-mint js-download" data-cta="hero">사장님 앱 받고 입점 신청 →</a>
+      </div>
+      <div class="qr-card desktop-only" data-cta="hero_qr" data-cta-kind="qr">
+        <div class="qr-box js-qr"></div>
+        <div>
+          <b>휴대폰 카메라로 QR을 찍어보세요</b>
+          <p>한끼배달 사장님 앱 설치 후 바로 입점 신청할 수 있어요.<br>혜택은 입점 승인 즉시 자동 적용돼요.</p>
+        </div>
+      </div>
+      <p class="event-period">신청 기간 <b data-b="period">2026.11.01 ~ 12.31</b> <b class="dday" id="dday" hidden></b></p>
+    </div>
+
+    <div class="hero-visual">
+      <div class="phone" role="img" aria-label="입점 혜택 4종이 적용된 한끼배달 사장님 앱 화면">
+        <div class="phone-screen">
+          <div class="ps-top"><b>우리가게 홈</b><span>입점 혜택 적용 중</span></div>
+          <div class="ps-body">
+            <div class="order-alert"><svg><use href="#i-bell"/></svg>새 주문이 들어왔어요! (3건)</div>
+            <div class="sales">
+              <small>오늘 매출 · 주문 21건</small>
+              <b>482,000원</b>
+              <div class="bars"><i style="height:30%"></i><i style="height:42%"></i><i style="height:38%"></i><i style="height:55%"></i><i style="height:68%"></i><i style="height:100%"></i></div>
+            </div>
+            <div class="applied">
+              <small>적용 중인 입점 혜택</small>
+              <div><span>신규 가게 상위노출</span><span>D-<span data-b="topDays">30</span></span></div>
+              <div><span>배달비 지원</span><span>건당 <span data-b="delivery">1,000</span>원</span></div>
+              <div><span>광고비 지원</span><span><span data-b="adCredit">100,000</span>원</span></div>
+              <div><span>중개수수료 할인</span><span><span data-b="feeDiscount">50</span>%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ 고민 → 해결 (혜택 요약) -->
+<section class="pain">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">사장님 고민, 이렇게 해결해요</span>
+      <h2 class="sec-title display">입점 초기 걱정 4가지,<br><span class="hl">혜택 4가지</span>로 덜어드려요</h2>
+    </div>
+    <div class="pain-list">
+      <a href="#b1" class="pain-card reveal">
+        <div class="pain-q">“새로 열면 <b>아무도 못 찾지 않을까?</b>”</div>
+        <div class="pain-a"><div class="pain-ic"><svg><use href="#i-top"/></svg></div><div><h3>신규 가게 상위노출</h3><span class="amt"><span data-b="topDays">30</span>일간 우선 노출</span></div></div>
+      </a>
+      <a href="#b2" class="pain-card reveal">
+        <div class="pain-q">“<b>배달비 부담</b>이 너무 커요”</div>
+        <div class="pain-a"><div class="pain-ic"><svg><use href="#i-scooter"/></svg></div><div><h3>배달비 감면 · <span data-b="months">3</span>개월</h3><span class="amt">건당 <span data-b="delivery">1,000</span>원 지원</span></div></div>
+      </a>
+      <a href="#b3" class="pain-card reveal">
+        <div class="pain-q">“<b>홍보비</b>까지 쓸 여유가 없어요”</div>
+        <div class="pain-a"><div class="pain-ic"><svg><use href="#i-mega"/></svg></div><div><h3>광고비 지원</h3><span class="amt"><span data-b="adCredit">100,000</span>원 적립</span></div></div>
+      </a>
+      <a href="#b4" class="pain-card reveal">
+        <div class="pain-q">“<b>수수료</b> 떼면 남는 게 없어요”</div>
+        <div class="pain-a"><div class="pain-ic"><svg><use href="#i-fee"/></svg></div><div><h3>중개수수료 할인</h3><span class="amt"><span data-b="months">3</span>개월 <span data-b="feeDiscount">50</span>% 할인</span></div></div>
+      </a>
+    </div>
+    <div class="inline-cta center-box reveal">
+      <a href="#" class="btn btn-mint js-download" data-cta="pain">혜택 4종 받고 입점하기</a>
+    </div>
+  </div>
+</section>
+
+<!-- ④-1 상위노출 -->
+<section id="b1">
+  <div class="wrap feature">
+    <div class="reveal">
+      <span class="eyebrow">혜택 1 · 앱 상위노출</span>
+      <h2 class="sec-title display">오픈하자마자<br>손님 눈에 <span class="hl">먼저</span> 보여요</h2>
+      <p class="sec-desc">신규 입점 가게는 <span data-b="topDays">30</span>일 동안 고객 앱의 ‘새로 오픈했어요’ 영역과 카테고리 상단에 우선 노출돼요.</p>
+      <ul class="check-list">
+        <li>입점 승인 즉시 자동 적용, 별도 신청 없음</li>
+        <li>우리 동네 고객에게 ‘NEW’ 배지로 표시</li>
+        <li>노출수·주문수는 사장님 앱에서 매일 확인</li>
+      </ul>
+    </div>
+    <div class="feature-visual reveal">
+      <div class="mock" role="img" aria-label="고객 앱에서 신규 가게가 목록 맨 위에 노출되는 모습">
+        <div class="mock-title"><span>고객 앱 · 우리 동네 홈</span><span>망원동</span></div>
+        <p class="section-label">✨ 새로 오픈했어요</p>
+        <div class="store mine"><div class="thumb">🍗</div><div><b>사장님네 치킨<span class="tag-new">NEW</span></b><small>★ 신규 · 배달 25~35분 · 최소주문 15,000원</small></div></div>
+        <div class="store dim"><div class="thumb">🍕</div><div><b>OO피자 망원점</b><small>★ 4.8 · 배달 30~40분</small></div></div>
+        <div class="store dim"><div class="thumb">🍔</div><div><b>XX버거</b><small>★ 4.7 · 배달 35~45분</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ④-2 배달비 감면 -->
+<section id="b2" class="alt">
+  <div class="wrap feature reverse">
+    <div class="reveal">
+      <span class="eyebrow">혜택 2 · 배달비 감면</span>
+      <h2 class="sec-title display">배달비 부담,<br>건당 <span class="hl"><span data-b="delivery">1,000</span>원</span> 덜어드려요</h2>
+      <p class="sec-desc">입점 후 <span data-b="months">3</span>개월 동안 한끼 직접배달 주문의 사장님 부담 배달비를 건당 <span data-b="delivery">1,000</span>원씩 지원해요.</p>
+      <ul class="check-list">
+        <li>정산 시 자동 차감, 따로 청구할 필요 없음</li>
+        <li>주문이 많을수록 지원 금액도 커져요</li>
+      </ul>
+    </div>
+    <div class="feature-visual reveal">
+      <div class="mock" role="img" aria-label="배달비 지원 전후 비교">
+        <div class="mock-title"><span>월 주문 300건 기준 (예시)</span><span>사장님 부담 배달비</span></div>
+        <div class="compare">
+          <div class="cmp-row"><small><span>지원 전</span><b>월 <span id="dBefore">900,000</span>원</b></small><div class="cmp-bar"><i style="width:100%"></i></div></div>
+          <div class="cmp-row after"><small><span>입점 혜택 적용</span><b>월 <span id="dAfter">600,000</span>원</b></small><div class="cmp-bar"><i id="dAfterBar" style="width:67%"></i></div></div>
+        </div>
+        <div class="save-pill"><span>매달 아끼는 배달비</span><b><span id="dSave">300,000</span>원</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ④-3 광고비 지원 -->
+<section id="b3">
+  <div class="wrap feature">
+    <div class="reveal">
+      <span class="eyebrow">혜택 3 · 홍보비용 절감</span>
+      <h2 class="sec-title display">첫 광고는<br>한끼배달 돈으로 해보세요</h2>
+      <p class="sec-desc">입점하면 광고비 <span data-b="adCredit">100,000</span>원을 적립해 드려요. 가게 노출 광고 등 한끼배달 광고 상품에 바로 쓸 수 있어요.</p>
+      <ul class="check-list">
+        <li>전단지·현수막 대신 우리 동네 한끼배달 고객에게 직접 노출</li>
+        <li>광고 효과(노출·클릭·주문) 리포트 무료 제공</li>
+        <li>적립 후 <span data-b="months">3</span>개월간 사용 가능</li>
+      </ul>
+    </div>
+    <div class="feature-visual reveal">
+      <div class="credit" role="img" aria-label="광고비 적립 카드">
+        <small>신규 입점 사장님 광고비</small>
+        <div class="won"><span data-b="adCredit">100,000</span>원</div>
+        <p>입점 승인 즉시 적립 · 가게 노출 광고 사용 가능</p>
+      </div>
+      <div class="ad-chart" role="img" aria-label="광고 시작 후 주별 노출수 증가 예시">
+        <small>광고 시작 후 주별 가게 노출수 (예시)</small>
+        <div class="bars">
+          <div><i style="height:18px"></i>오픈 전</div>
+          <div class="on"><i style="height:36px"></i>1주</div>
+          <div class="on"><i style="height:52px"></i>2주</div>
+          <div class="on"><i style="height:64px"></i>3주</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ④-4 수수료 할인 -->
+<section id="b4" class="alt">
+  <div class="wrap feature reverse">
+    <div class="reveal">
+      <span class="eyebrow">혜택 4 · 수수료 절감</span>
+      <h2 class="sec-title display">중개수수료,<br>첫 <span data-b="months">3</span>개월은 <span class="hl">절반</span>만</h2>
+      <p class="sec-desc">입점 후 <span data-b="months">3</span>개월 동안 중개수수료를 <span data-b="feeDiscount">50</span>% 할인해 드려요. 장사가 자리 잡을 때까지 부담을 줄여드려요.</p>
+      <ul class="check-list">
+        <li>가입비 · 월 고정비 0원</li>
+        <li>할인은 정산 금액에 자동 반영</li>
+      </ul>
+    </div>
+    <div class="feature-visual reveal">
+      <div class="mock" role="img" aria-label="중개수수료 할인 전후 비교">
+        <div class="mock-title"><span>20,000원 주문 1건 기준 (예시)</span><span>중개수수료</span></div>
+        <div class="compare">
+          <div class="cmp-row"><small><span>기본 <span data-b="baseFee">7.8</span>%</span><b><span id="fBefore">1,560</span>원</b></small><div class="cmp-bar"><i style="width:100%"></i></div></div>
+          <div class="cmp-row after"><small><span>입점 혜택 <span id="fRate">3.9</span>%</span><b><span id="fAfter">780</span>원</b></small><div class="cmp-bar"><i style="width:50%"></i></div></div>
+        </div>
+        <div class="save-pill"><span>주문 1건마다 아끼는 수수료</span><b><span id="fSave">780</span>원</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ 절감액 계산기 -->
+<section class="calc-sec" id="calc">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">우리 가게는 얼마나 아낄까?</span>
+      <h2 class="sec-title display"><span data-b="months">3</span>개월 예상 절감액 계산하기</h2>
+      <p class="sec-desc">예상 주문 수와 평균 주문 금액을 움직여 보세요</p>
+    </div>
+    <div class="calc reveal">
+      <div class="calc-input">
+        <div>
+          <label for="cOrders"><span>월 예상 주문 수</span><b><span id="vOrders">300</span>건</b></label>
+          <input type="range" id="cOrders" min="50" max="1500" step="50" value="300">
+        </div>
+        <div>
+          <label for="cAvg"><span>평균 주문 금액</span><b><span id="vAvg">22,000</span>원</b></label>
+          <input type="range" id="cAvg" min="10000" max="50000" step="1000" value="22000">
+        </div>
+      </div>
+      <div class="calc-out" aria-live="polite">
+        <div class="row"><span>중개수수료 <span data-b="feeDiscount">50</span>% 할인</span><b id="oFee">0원</b></div>
+        <div class="row"><span>배달비 건당 <span data-b="delivery">1,000</span>원 지원</span><b id="oDel">0원</b></div>
+        <div class="row"><span>광고비 지원</span><b id="oAd">0원</b></div>
+        <div class="total"><span><span data-b="months">3</span>개월 예상 절감액</span><b id="oTotal">0원</b></div>
+        <small>* 기본 중개수수료 <span data-b="baseFee">7.8</span>% 기준 예시 계산이며, 실제 금액은 가게 조건에 따라 달라요.</small>
+      </div>
+    </div>
+    <div class="inline-cta center-box reveal">
+      <a href="#" class="btn btn-mint js-download" data-cta="calc">이 혜택 받고 입점 신청하기</a>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ 성장 지원 -->
+<section id="support">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">입점 후에도 함께해요</span>
+      <h2 class="sec-title display">혼자 고민하지 마세요,<br><span class="hl">사장님 성장 지원</span></h2>
+      <p class="sec-desc">배우고, 직접 상담받고, 선배 사장님 이야기도 들어보세요</p>
+    </div>
+    <div class="support-grid">
+      <div class="support reveal">
+        <div class="ic" style="background:#FFEDE5"><svg><use href="#i-school"/></svg></div>
+        <div>
+          <span class="kind">온라인 교육 · 무료</span>
+          <h3>한끼 사장님 아카데미</h3>
+          <p>메뉴 사진 찍는 법, 리뷰 관리, 상권 분석까지 장사 노하우 강의와 콘텐츠를 무료로 들을 수 있어요.</p>
+          <div class="meta">입점 사장님 <b>전용 오픈 가이드</b> 제공</div>
+        </div>
+      </div>
+      <div class="support reveal">
+        <div class="ic" style="background:#FFF1F1"><svg><use href="#i-booth"/></svg></div>
+        <div>
+          <span class="kind">오프라인 · 1:1 상담</span>
+          <h3>창업박람회 한끼배달 부스</h3>
+          <p>예비 창업 사장님이라면 박람회 한끼배달 부스에서 입점 절차와 혜택을 1:1로 상담받으세요.</p>
+          <div class="meta">현장 입점 신청 시 <b>광고비 <span data-b="fairBonus">50,000</span>원 추가</b></div>
+        </div>
+      </div>
+      <div class="support reveal">
+        <div class="ic" style="background:#FFF8DC"><svg><use href="#i-chef"/></svg></div>
+        <div>
+          <span class="kind">오프라인 · 세미나</span>
+          <h3>외식업박람회 한끼배달 세미나</h3>
+          <p>배달 트렌드, 잘 팔리는 메뉴 구성, 포장 노하우를 한끼배달 데이터로 알려드려요.</p>
+          <div class="meta">세미나 참석 사장님 <b>기념품 증정</b></div>
+        </div>
+      </div>
+      <div class="support reveal">
+        <div class="ic" style="background:#EEF2F6"><svg><use href="#i-chat"/></svg></div>
+        <div>
+          <span class="kind">온라인 커뮤니티</span>
+          <h3>동네가게 사장모임 커뮤니티</h3>
+          <p>현직 사장님들의 한끼배달 입점 후기, 운영 팁, 질문과 답변을 한곳에서 확인하세요.</p>
+          <div class="meta">선배 사장님 <b>입점 후기</b> 모아보기</div>
+        </div>
+      </div>
+    </div>
+    <div class="schedule reveal" role="img" aria-label="다가오는 사장님 행사 일정">
+      <div class="sch-head"><b>📅 다가오는 일정</b><span>예시 · 앱 공지에서 최신 일정 확인</span></div>
+      <div class="sch-row"><div class="date"><small>11월</small>13<small>~15</small></div><div><b>창업박람회 · 한끼배달 부스</b><span>서울 코엑스 · 1:1 입점 상담 · 현장 신청 시 광고비 <em><span data-b="fairBonus">50,000</span>원</em> 추가</span></div></div>
+      <div class="sch-row"><div class="date"><small>11월</small>26<small>~28</small></div><div><b>외식업박람회 · 한끼배달 세미나</b><span>일산 킨텍스 · 배달 트렌드 · 메뉴 구성 노하우</span></div></div>
+      <div class="sch-row"><div class="date"><small>매주</small>화<small>20시</small></div><div><b>한끼 사장님 아카데미 라이브 강의</b><span>온라인 무료 · 입점 사장님 오픈 가이드</span></div></div>
+    </div>
+    <div class="inline-cta center-box reveal">
+      <a href="#" class="btn btn-primary js-download" data-cta="support">교육·박람회 일정 앱에서 보기</a>
+    </div>
+  </div>
+</section>
+
+<!-- ⑦ 입점 3단계 -->
+<section class="steps-sec">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">HOW TO</span>
+      <h2 class="sec-title display">입점은 앱에서 3단계면 끝</h2>
+      <p class="sec-desc">가입비 0원, 서류만 있으면 바로 신청할 수 있어요</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><h4>한끼배달 사장님 앱 설치</h4><p>버튼을 누르면 스토어로 바로 이동해요</p></div>
+      <div class="step reveal"><h4>입점 신청 · 서류 등록</h4><p>가게 정보와 서류를 사진으로 찍어 올리면 끝</p></div>
+      <div class="step reveal"><h4>심사 후 영업 시작</h4><p>승인되면 입점 혜택 4종이 자동 적용돼요</p></div>
+    </div>
+    <div class="docs reveal"><b>📎 준비 서류</b> 사업자등록증 · 영업신고증 · 정산받을 통장 사본 · 대표자 신분증</div>
+    <div class="inline-cta center-box reveal">
+      <a href="#" class="btn btn-mint js-download" data-cta="steps">지금 입점 신청하기 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ 신뢰 -->
+<section>
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">WHY 한끼배달</span>
+      <h2 class="sec-title display">손님이 가장 많은 곳에서<br>시작하세요</h2>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><strong>2천만+</strong><span>월 이용 고객</span></div>
+      <div class="stat"><strong>30만+</strong><span>함께하는 가게</span></div>
+      <div class="stat"><strong>0원</strong><span>가입비·고정비</span></div>
+    </div>
+    <div class="reviews reveal">
+      <div class="review">
+        <div class="who"><div class="avatar">🍗</div><div><b>치킨집 김 사장님</b><small>입점 2개월 차 · 서울 마포</small></div></div>
+        오픈 첫 달에 상위노출 덕분에 동네 손님이 금방 찾아왔어요. 광고비 지원으로 광고도 처음 부담 없이 써봤고요.
+        <span class="result">첫 달 주문 280건</span>
+      </div>
+      <div class="review">
+        <div class="who"><div class="avatar">🍜</div><div><b>분식집 이 사장님</b><small>입점 3개월 차 · 경기 수원</small></div></div>
+        창업박람회 한끼배달 부스에서 상담받고 바로 신청했어요. 수수료 할인 기간 동안 메뉴 테스트를 마음 편히 했습니다.
+        <span class="result">3개월 절감 약 90만원</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑨ FAQ / 유의사항 -->
+<section class="faq">
+  <div class="wrap faq-wrap">
+    <div class="center reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="sec-title display">사장님들이 많이 물어봐요</h2>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" type="button">가입비나 월 고정비가 있나요?</button>
+      <div class="faq-a"><p>없어요. 가입비 · 월 고정비 0원이고, 주문이 들어왔을 때만 중개수수료가 발생해요. 첫 <span data-b="months">3</span>개월은 그마저도 <span data-b="feeDiscount">50</span>% 할인돼요.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" type="button">입점 심사는 얼마나 걸리나요?</button>
+      <div class="faq-a"><p>서류가 모두 준비되어 있다면 보통 영업일 기준 3~5일 안에 완료돼요. 진행 상황은 한끼배달 사장님 앱에서 확인할 수 있어요.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" type="button">아직 가게 오픈 전인데 신청할 수 있나요?</button>
+      <div class="faq-a"><p>사업자등록증과 영업신고증이 있으면 오픈 전에도 신청할 수 있어요. 예비 창업 단계라면 창업박람회 한끼배달 부스나 한끼 사장님 아카데미에서 먼저 상담받아 보세요.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" type="button">혜택은 언제부터 적용되나요?</button>
+      <div class="faq-a"><p>입점 승인일부터 자동 적용돼요. 상위노출은 <span data-b="topDays">30</span>일, 배달비 지원·수수료 할인은 <span data-b="months">3</span>개월, 광고비는 적립 후 <span data-b="months">3</span>개월간 사용할 수 있어요.</p></div>
+    </div>
+    <div class="notice">
+      <h4>유의사항</h4>
+      <ul>
+        <li>신청 기간: <span data-b="period">2026.11.01 ~ 12.31</span> · 한끼배달에 처음 입점하는 사업자 대상 (기존 입점 이력이 있는 사업자 제외)</li>
+        <li>신규 가게 상위노출은 입점 승인일로부터 <span data-b="topDays">30</span>일간 적용되며, 노출 위치는 지역·카테고리에 따라 달라질 수 있습니다.</li>
+        <li>배달비 지원(건당 <span data-b="delivery">1,000</span>원)과 중개수수료 <span data-b="feeDiscount">50</span>% 할인은 입점 승인일로부터 <span data-b="months">3</span>개월간 한끼 직접배달 주문에 적용됩니다.</li>
+        <li>광고비 <span data-b="adCredit">100,000</span>원은 입점 승인 시 적립되며, 적립일로부터 <span data-b="months">3</span>개월간 사용 가능합니다(현금 환급 불가).</li>
+        <li>박람회 현장 입점 신청 시 광고비 <span data-b="fairBonus">50,000</span>원이 추가 적립되며(행사별 상이), 한끼 사장님 아카데미 교육은 무료입니다.</li>
+        <li>박람회 일정은 예시이며 실제 일정은 한끼배달 사장님 앱 공지를 확인해 주세요. 이벤트는 사전 고지 후 변경 또는 조기 종료될 수 있습니다.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ⑩ 마지막 CTA -->
+<section class="final" id="final">
+  <div class="wrap final-box">
+    <h2 class="sec-title display">사장님 첫 장사,<br>혜택 받고 시작하세요</h2>
+    <p class="sec-desc">입점 승인 즉시 4가지 혜택이 자동 적용돼요</p>
+    <div class="recap">
+      <div><b><span data-b="topDays">30</span>일</b>상위노출</div>
+      <div><b>건당 <span data-b="delivery">1,000</span>원</b>배달비 지원 · <span data-b="months">3</span>개월</div>
+      <div><b><span data-b="adCreditMan">10</span>만원</b>광고비 지원</div>
+      <div><b><span data-b="feeDiscount">50</span>% 할인</b>중개수수료 · <span data-b="months">3</span>개월</div>
+    </div>
+    <div class="recap-plus"><b>+ 함께 드려요</b> 한끼 사장님 아카데미 무료 교육 · 박람회 1:1 상담(현장 신청 시 광고비 <span data-b="fairBonus">50,000</span>원 추가) · 동네가게 사장모임 선배 사장님 후기</div>
+    <div class="qr-card desktop-only" data-cta="final_qr" data-cta-kind="qr">
+      <div class="qr-box js-qr"></div>
+      <div><b>휴대폰으로 QR을 찍어 설치하세요</b><p>한끼배달 사장님 앱에서 입점 신청까지 한 번에 할 수 있어요.</p></div>
+    </div>
+    <a href="#" class="btn btn-mint js-download mobile-only" data-cta="final">사장님 앱 받고 입점 신청 →</a>
+    <div class="store-row">
+      <a href="#" class="store-btn js-store" data-store="ios" data-cta="final_ios"><svg><use href="#i-apple"/></svg>App Store</a>
+      <a href="#" class="store-btn js-store" data-store="android" data-cta="final_android"><svg><use href="#i-play"/></svg>Google Play</a>
+    </div>
+    <a href="tel:1600-0000" class="btn btn-line" data-cta="tel" id="telBtn">📞 전화로 입점 상담 받기 (1600-0000)</a>
+  </div>
+</section>
+
+<footer class="footer">한끼배달은 마케팅 실습용 가상 브랜드이며 실제 서비스가 아닙니다. 혜택 금액·조건·행사 내용은 실제와 다를 수 있습니다.</footer>
+
+<!-- ⑪ 하단 고정 CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <a href="#" class="btn btn-mint js-download" data-cta="sticky">🏪 앱 받고 입점 혜택 4종 받기</a>
+</div>
+
+<!-- QR 모달 (데스크톱) -->
+<div class="modal" id="qrModal" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
+  <div class="modal-box">
+    <button class="modal-close" type="button" aria-label="닫기">×</button>
+    <h3 id="qrTitle">휴대폰으로 설치하세요</h3>
+    <p>카메라로 QR을 찍으면 한끼배달 사장님 앱 설치 화면으로 이동해요</p>
+    <div class="qr-box js-qr"></div>
+    <div class="store-row">
+      <a href="#" class="store-btn js-store" data-store="ios" data-cta="modal_ios"><svg><use href="#i-apple"/></svg>App Store</a>
+      <a href="#" class="store-btn js-store" data-store="android" data-cta="modal_android"><svg><use href="#i-play"/></svg>Google Play</a>
+    </div>
+  </div>
+</div>
+
+<!-- Amplitude Analytics: API 키는 build_site.py가 .env 값으로 치환 (비밀키는 페이지에 넣지 않음) -->
+<script src="https://cdn.jsdelivr.net/npm/@amplitude/analytics-browser@2.48.1/lib/scripts/amplitude-min.js"></script>
+<script>
+  (function () {
+    var KEY = '21ff3cfa5bc20c21ea8ea53ceeecd4e4';
+    if (!window.amplitude || KEY.indexOf('%%') === 0) return;
+    window.amplitude.init(KEY, {
+      autocapture: { pageViews: true, sessions: true, attribution: true, formInteractions: false, fileDownloads: false, elementInteractions: false }
+    });
+  })();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(function () {
+  /* ===== 설정: 혜택 조건은 여기 한 곳에서만 관리 → 페이지 전체 자동 반영 ===== */
+  var CONFIG = {
+    benefits: {
+      topDays: 30,          // 신규 가게 상위노출 기간(일)
+      delivery: 1000,       // 배달비 건당 지원(원)
+      months: 3,            // 배달비·수수료 혜택 기간(개월)
+      adCredit: 100000,     // 광고비 적립(원)
+      feeDiscount: 50,      // 중개수수료 할인율(%)
+      fairBonus: 50000,     // 박람회 현장 신청 추가 광고비(원)
+      baseFee: 7.8          // 기본 중개수수료율(%) - 예시
+    },
+    deliveryBaseFee: 3000,  // 계산 예시용 사장님 부담 배달비(건당)
+    eventStart: '2026-11-01', eventEnd: '2026-12-31',
+    appStoreUrl:  'https://apps.apple.com/kr/app/REPLACE_OWNER_APP_ID',
+    playStoreUrl: 'https://play.google.com/store/apps/details?id=REPLACE_OWNER_PACKAGE',
+    oneLinkUrl:   ''        // 원링크 사용 시 입력 → OS 자동 분기 + QR에도 사용
+  };
+
+  var b = CONFIG.benefits;
+  var won = function (n) { return Math.round(n).toLocaleString('ko-KR'); };
+  var fmtDate = function (s, short) { var p = s.split('-'); return short ? p[1] + '.' + p[2] : p.join('.'); };
+  var values = {
+    topDays: b.topDays, delivery: won(b.delivery), months: b.months, adCredit: won(b.adCredit),
+    adCreditMan: won(b.adCredit / 10000), feeDiscount: b.feeDiscount, baseFee: b.baseFee, fairBonus: won(b.fairBonus),
+    period: fmtDate(CONFIG.eventStart) + ' ~ ' + fmtDate(CONFIG.eventEnd, true)
+  };
+  document.querySelectorAll('[data-b]').forEach(function (el) {
+    if (values[el.dataset.b] != null) el.textContent = values[el.dataset.b];
+  });
+
+  /* 혜택 상세 비교 그림도 같은 설정값으로 계산 */
+  var exOrders = 300, dBase = CONFIG.deliveryBaseFee;
+  var dBefore = exOrders * dBase, dAfter = exOrders * Math.max(0, dBase - b.delivery);
+  document.getElementById('dBefore').textContent = won(dBefore);
+  document.getElementById('dAfter').textContent = won(dAfter);
+  document.getElementById('dSave').textContent = won(dBefore - dAfter);
+  document.getElementById('dAfterBar').style.width = (dAfter / dBefore * 100) + '%';
+  var fRate = b.baseFee * (1 - b.feeDiscount / 100);
+  document.getElementById('fRate').textContent = Math.round(fRate * 100) / 100;
+  document.getElementById('fBefore').textContent = won(20000 * b.baseFee / 100);
+  document.getElementById('fAfter').textContent = won(20000 * fRate / 100);
+  document.getElementById('fSave').textContent = won(20000 * (b.baseFee - fRate) / 100);
+
+  /* ===== D-day ===== */
+  var end = new Date(CONFIG.eventEnd + 'T23:59:59+09:00');
+  var days = Math.ceil((end - new Date()) / 86400000);
+  var dd = document.getElementById('dday');
+  if (days > 0) { dd.textContent = 'D-' + days; dd.hidden = false; }
+
+  /* ===== 절감액 계산기 ===== */
+  var cO = document.getElementById('cOrders'), cA = document.getElementById('cAvg');
+  function calc() {
+    var n = +cO.value, avg = +cA.value;
+    var fee = n * avg * (b.baseFee / 100) * (b.feeDiscount / 100) * b.months;
+    var del = n * b.delivery * b.months;
+    document.getElementById('vOrders').textContent = won(n);
+    document.getElementById('vAvg').textContent = won(avg);
+    document.getElementById('oFee').textContent = won(fee) + '원';
+    document.getElementById('oDel').textContent = won(del) + '원';
+    document.getElementById('oAd').textContent = won(b.adCredit) + '원';
+    document.getElementById('oTotal').textContent = won(fee + del + b.adCredit) + '원';
+  }
+  var calcTracked = false;
+  [cO, cA].forEach(function (el) {
+    el.addEventListener('input', function () {
+      calc();
+      if (!calcTracked) { calcTracked = true; track('calc_use'); }
+    });
+  });
+  calc();
+
+  var params = new URLSearchParams(location.search);
+  var src = (params.get('utm_source') || '').toLowerCase();
+
+  /* ===== 채널별 히어로 문구 ===== */
+  var badge = document.getElementById('heroBadge');
+  if (src === 'youtube') badge.textContent = '📺 영상 보고 오신 예비·신규 사장님 전용';
+  else if (src === 'inapp') badge.textContent = '🏪 창업 준비 중이세요? 신규 사장님 전용';
+
+  var keep = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'];
+  function withTracking(url) {
+    var u = new URL(url);
+    keep.forEach(function (k) { if (params.get(k)) u.searchParams.set(k, params.get(k)); });
+    return u.toString();
+  }
+  function track(name, data) {
+    window.dataLayer = window.dataLayer || [];
+    var props = Object.assign({ utm_source: src || 'direct', audience: 'owner', page: 'owner' }, data || {});
+    window.dataLayer.push(Object.assign({ event: name }, props));
+    if (window.amplitude && window.amplitude.track) window.amplitude.track(name, props);
+  }
+
+  /* ===== 기기 판별 → 스토어 / 데스크톱은 QR 모달 ===== */
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var isAndroid = /Android/i.test(ua);
+  var modal = document.getElementById('qrModal');
+
+  function goStore(store, cta) {
+    var url;
+    if (store === 'ios') url = CONFIG.appStoreUrl;
+    else if (store === 'android') url = CONFIG.playStoreUrl;
+    else if (CONFIG.oneLinkUrl) url = CONFIG.oneLinkUrl;
+    else url = isIOS ? CONFIG.appStoreUrl : isAndroid ? CONFIG.playStoreUrl : null;
+    if (!url) { modal.classList.add('open'); return; }
+    var dest = withTracking(url);
+    (window.__ctaFlushThen || function (fn) { fn(); })(function () { location.href = dest; });
+  }
+  document.querySelectorAll('.js-download').forEach(function (el) {
+    el.addEventListener('click', function (e) { e.preventDefault(); goStore('auto', el.dataset.cta); });
+  });
+  document.querySelectorAll('.js-store').forEach(function (el) {
+    el.addEventListener('click', function (e) { e.preventDefault(); goStore(el.dataset.store, el.dataset.cta); });
+  });
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal || e.target.classList.contains('modal-close')) modal.classList.remove('open');
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') modal.classList.remove('open'); });
+
+  /* ===== QR ===== */
+  var qrTarget = withTracking(CONFIG.oneLinkUrl || location.href.split('#')[0]);
+  document.querySelectorAll('.js-qr').forEach(function (el) {
+    if (window.QRCode) new QRCode(el, { text: qrTarget, width: 240, height: 240, colorDark: '#1D1D1F', correctLevel: QRCode.CorrectLevel.M });
+    else if (el.closest('.qr-card')) el.closest('.qr-card').style.display = 'none';
+  });
+
+  /* ===== FAQ ===== */
+  document.querySelectorAll('.faq-item').forEach(function (item) {
+    item.querySelector('.faq-q').addEventListener('click', function () {
+      var a = item.querySelector('.faq-a'), open = item.classList.toggle('open');
+      a.style.maxHeight = open ? a.scrollHeight + 'px' : 0;
+    });
+  });
+
+  /* ===== 하단 고정 CTA ===== */
+  var sticky = document.getElementById('stickyCta');
+  var heroOut = false, finalIn = false;
+  var upd = function () { sticky.classList.toggle('show', heroOut && !finalIn); };
+  new IntersectionObserver(function (e) { heroOut = !e[0].isIntersecting; upd(); }).observe(document.querySelector('.hero-cta'));
+  new IntersectionObserver(function (e) { finalIn = e[0].isIntersecting; upd(); }).observe(document.getElementById('final'));
+
+  /* ===== 등장 애니메이션 + 섹션 도달 ===== */
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  ['b1', 'b2', 'b3', 'b4', 'calc', 'support'].forEach(function (id) {
+    var seen = false;
+    new IntersectionObserver(function (e) {
+      if (e[0].isIntersecting && !seen) { seen = true; track('section_view', { section: id }); }
+    }, { threshold: 0.4 }).observe(document.getElementById(id));
+  });
+
+  track('landing_view');
+})();
+</script>
+<!-- CTA 노출·클릭 수집: [data-cta] 요소마다 cta_impression(화면 50% 이상 노출, 페이지뷰당 1회) / cta_click 기록 -->
+<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  var PAGE = document.body.getAttribute('data-page') || 'index';
+  var IS_TEST = params.get('test') === '1'; // 테스트 모드: 이벤트에 is_test 표시 + 실제 이동 생략
+  var base = {
+    page: PAGE,
+    audience: PAGE === 'index' ? 'index' : PAGE,
+    utm_source: params.get('utm_source') || 'direct',
+    utm_campaign: params.get('utm_campaign') || undefined,
+    viewport: innerWidth < 768 ? 'mobile' : innerWidth < 1024 ? 'tablet' : 'desktop'
+  };
+  if (IS_TEST) base.is_test = true;
+
+  function info(el) {
+    var href = el.getAttribute('href') || '';
+    var kind = el.getAttribute('data-cta-kind') ||
+      (el.classList.contains('js-store') ? 'store' : el.classList.contains('js-download') ? 'download' :
+       href.indexOf('tel:') === 0 ? 'tel' : el.tagName === 'BUTTON' ? 'button' : 'link');
+    return Object.assign({
+      cta_id: el.getAttribute('data-cta'),
+      cta_kind: kind,
+      cta_label: (el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60),
+      cta_store: el.getAttribute('data-store') || undefined
+    }, base);
+  }
+  function send(name, props) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(Object.assign({ event: name }, props));
+    if (window.amplitude && window.amplitude.track) return window.amplitude.track(name, props);
+  }
+  window.__ctaSend = send;
+
+  /* 노출: 50% 이상 보이면 1회 (sticky·모달처럼 나중에 보이는 CTA도 그 시점에 기록) */
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      var el = en.target;
+      if (!en.isIntersecting || seen.has(el)) return;
+      var r = el.getBoundingClientRect();
+      if (r.width === 0 || r.height === 0) return; // display:none 등 실제로 안 보이는 경우 제외
+      seen.add(el);
+      io.unobserve(el);
+      send('cta_impression', info(el));
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-cta]').forEach(function (el) { io.observe(el); });
+
+  /* 클릭: 캡처 단계에서 먼저 기록 → 페이지를 떠나는 CTA는 전송 후 이동 */
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('[data-cta]');
+    if (!el) return;
+    var props = info(el);
+    if (IS_TEST) {
+      e.preventDefault(); e.stopImmediatePropagation();
+      send('cta_click', props);
+      console.info('[CTA 테스트] click', props.cta_id);
+      return;
+    }
+    var res = send('cta_click', props);
+    var href = el.getAttribute('href') || '';
+    var leaves = href && href.charAt(0) !== '#' && href.indexOf('tel:') !== 0 && !el.classList.contains('js-download') && !el.classList.contains('js-store');
+    if (leaves && res && res.promise && !(e.ctrlKey || e.metaKey || e.shiftKey)) {
+      e.preventDefault();
+      var go = function () { location.href = href; };
+      Promise.race([res.promise, new Promise(function (r) { setTimeout(r, 600); })]).then(go, go);
+    }
+  }, true);
+
+  /* 스토어 이동 CTA(js-download/js-store)는 페이지 스크립트가 호출: 전송 완료(최대 0.6초) 후 이동 */
+  window.__ctaFlushThen = function (fn) {
+    var done = false, go = function () { if (!done) { done = true; fn(); } };
+    try { window.amplitude.flush().promise.then(go, go); } catch (err) { go(); }
+    setTimeout(go, 600);
+  };
+})();
+</script>
+</body>
+</html>

@@ -1,13 +1,17 @@
-# 비밀값: 절대 커밋 금지
+# 비밀값·문서 파일: 절대 커밋 금지
 .env
 .env.*
 !.env.example
+*.pptx
 
-# 배포용 HTML·빌드 스크립트만 저장소에 올림 (원본·버전·스크린샷은 로컬 보관)
+# 저장소에는 배포용 HTML(루트)·템플릿(site/)·빌드 스크립트만 올림 (원본·버전·스크린샷은 로컬 보관)
 /*
 !/.gitignore
 !/.env.example
 !/build_site.py
+!/index.html
+!/hankki_customer.html
+!/hankki_owner.html
 !/site/
 /site/*
 !/site/*.html
