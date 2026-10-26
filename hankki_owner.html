@@ -358,7 +358,7 @@
   }
 </style>
 </head>
-<body>
+<body data-page="owner">
 <!-- SVG 아이콘 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
@@ -402,7 +402,7 @@
       <div class="hero-cta mobile-only">
         <a href="#" class="btn btn-mint js-download" data-cta="hero">사장님 앱 받고 입점 신청 →</a>
       </div>
-      <div class="qr-card desktop-only">
+      <div class="qr-card desktop-only" data-cta="hero_qr" data-cta-kind="qr">
         <div class="qr-box js-qr"></div>
         <div>
           <b>휴대폰 카메라로 QR을 찍어보세요</b>
@@ -762,7 +762,7 @@
       <div><b><span data-b="feeDiscount">50</span>% 할인</b>중개수수료 · <span data-b="months">3</span>개월</div>
     </div>
     <div class="recap-plus"><b>+ 함께 드려요</b> 한끼 사장님 아카데미 무료 교육 · 박람회 1:1 상담(현장 신청 시 광고비 <span data-b="fairBonus">50,000</span>원 추가) · 동네가게 사장모임 선배 사장님 후기</div>
-    <div class="qr-card desktop-only">
+    <div class="qr-card desktop-only" data-cta="final_qr" data-cta-kind="qr">
       <div class="qr-box js-qr"></div>
       <div><b>휴대폰으로 QR을 찍어 설치하세요</b><p>한끼배달 사장님 앱에서 입점 신청까지 한 번에 할 수 있어요.</p></div>
     </div>
@@ -909,14 +909,14 @@
   var modal = document.getElementById('qrModal');
 
   function goStore(store, cta) {
-    track('cta_click', { cta_position: cta, store: store });
     var url;
     if (store === 'ios') url = CONFIG.appStoreUrl;
     else if (store === 'android') url = CONFIG.playStoreUrl;
     else if (CONFIG.oneLinkUrl) url = CONFIG.oneLinkUrl;
     else url = isIOS ? CONFIG.appStoreUrl : isAndroid ? CONFIG.playStoreUrl : null;
     if (!url) { modal.classList.add('open'); return; }
-    location.href = withTracking(url);
+    var dest = withTracking(url);
+    (window.__ctaFlushThen || function (fn) { fn(); })(function () { location.href = dest; });
   }
   document.querySelectorAll('.js-download').forEach(function (el) {
     el.addEventListener('click', function (e) { e.preventDefault(); goStore('auto', el.dataset.cta); });
@@ -924,7 +924,6 @@
   document.querySelectorAll('.js-store').forEach(function (el) {
     el.addEventListener('click', function (e) { e.preventDefault(); goStore(el.dataset.store, el.dataset.cta); });
   });
-  document.getElementById('telBtn').addEventListener('click', function () { track('cta_click', { cta_position: 'tel' }); });
   modal.addEventListener('click', function (e) {
     if (e.target === modal || e.target.classList.contains('modal-close')) modal.classList.remove('open');
   });
@@ -965,6 +964,84 @@
   });
 
   track('landing_view');
+})();
+</script>
+<!-- CTA 노출·클릭 수집: [data-cta] 요소마다 cta_impression(화면 50% 이상 노출, 페이지뷰당 1회) / cta_click 기록 -->
+<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  var PAGE = document.body.getAttribute('data-page') || 'index';
+  var IS_TEST = params.get('test') === '1'; // 테스트 모드: 이벤트에 is_test 표시 + 실제 이동 생략
+  var base = {
+    page: PAGE,
+    audience: PAGE === 'index' ? 'index' : PAGE,
+    utm_source: params.get('utm_source') || 'direct',
+    utm_campaign: params.get('utm_campaign') || undefined,
+    viewport: innerWidth < 768 ? 'mobile' : innerWidth < 1024 ? 'tablet' : 'desktop'
+  };
+  if (IS_TEST) base.is_test = true;
+
+  function info(el) {
+    var href = el.getAttribute('href') || '';
+    var kind = el.getAttribute('data-cta-kind') ||
+      (el.classList.contains('js-store') ? 'store' : el.classList.contains('js-download') ? 'download' :
+       href.indexOf('tel:') === 0 ? 'tel' : el.tagName === 'BUTTON' ? 'button' : 'link');
+    return Object.assign({
+      cta_id: el.getAttribute('data-cta'),
+      cta_kind: kind,
+      cta_label: (el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60),
+      cta_store: el.getAttribute('data-store') || undefined
+    }, base);
+  }
+  function send(name, props) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(Object.assign({ event: name }, props));
+    if (window.amplitude && window.amplitude.track) return window.amplitude.track(name, props);
+  }
+  window.__ctaSend = send;
+
+  /* 노출: 50% 이상 보이면 1회 (sticky·모달처럼 나중에 보이는 CTA도 그 시점에 기록) */
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      var el = en.target;
+      if (!en.isIntersecting || seen.has(el)) return;
+      var r = el.getBoundingClientRect();
+      if (r.width === 0 || r.height === 0) return; // display:none 등 실제로 안 보이는 경우 제외
+      seen.add(el);
+      io.unobserve(el);
+      send('cta_impression', info(el));
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-cta]').forEach(function (el) { io.observe(el); });
+
+  /* 클릭: 캡처 단계에서 먼저 기록 → 페이지를 떠나는 CTA는 전송 후 이동 */
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('[data-cta]');
+    if (!el) return;
+    var props = info(el);
+    if (IS_TEST) {
+      e.preventDefault(); e.stopImmediatePropagation();
+      send('cta_click', props);
+      console.info('[CTA 테스트] click', props.cta_id);
+      return;
+    }
+    var res = send('cta_click', props);
+    var href = el.getAttribute('href') || '';
+    var leaves = href && href.charAt(0) !== '#' && href.indexOf('tel:') !== 0 && !el.classList.contains('js-download') && !el.classList.contains('js-store');
+    if (leaves && res && res.promise && !(e.ctrlKey || e.metaKey || e.shiftKey)) {
+      e.preventDefault();
+      var go = function () { location.href = href; };
+      Promise.race([res.promise, new Promise(function (r) { setTimeout(r, 600); })]).then(go, go);
+    }
+  }, true);
+
+  /* 스토어 이동 CTA(js-download/js-store)는 페이지 스크립트가 호출: 전송 완료(최대 0.6초) 후 이동 */
+  window.__ctaFlushThen = function (fn) {
+    var done = false, go = function () { if (!done) { done = true; fn(); } };
+    try { window.amplitude.flush().promise.then(go, go); } catch (err) { go(); }
+    setTimeout(go, 600);
+  };
 })();
 </script>
 </body>
