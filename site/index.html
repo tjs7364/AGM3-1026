@@ -22,17 +22,17 @@
   footer { margin-top: 32px; font-size: 12px; color: var(--sub); }
 </style>
 </head>
-<body>
+<body data-page="index">
 <main>
   <h1><span>한끼배달</span> 랜딩 페이지</h1>
   <p class="lead">광고 클릭 후 도착하는 마케팅 랜딩 페이지 2종입니다.</p>
   <div class="grid">
-    <a class="card" href="hankki_customer.html">
+    <a class="card" href="hankki_customer.html" data-cta="index_customer" data-cta-kind="nav">
       <span class="tag">고객용</span>
       <h2>웰컴 혜택</h2>
       <p>처음이거나 1년 만에 돌아온 고객에게 첫 주문 할인, 한끼패스 무료 체험, 친구 초대 쿠폰을 안내해요.</p>
     </a>
-    <a class="card" href="hankki_owner.html">
+    <a class="card" href="hankki_owner.html" data-cta="index_owner" data-cta-kind="nav">
       <span class="tag">사장님용</span>
       <h2>입점 혜택</h2>
       <p>신규 사장님께 상위노출, 배달비·광고비 지원, 수수료 할인과 성장 지원 프로그램을 안내해요.</p>
@@ -51,12 +51,83 @@
     });
   })();
 </script>
+<!-- CTA 노출·클릭 수집: [data-cta] 요소마다 cta_impression(화면 50% 이상 노출, 페이지뷰당 1회) / cta_click 기록 -->
 <script>
-  document.querySelectorAll('a.card').forEach(function (a) {
-    a.addEventListener('click', function () {
-      if (window.amplitude && window.amplitude.track) window.amplitude.track('index_card_click', { target: a.getAttribute('href'), page: 'index' });
+(function () {
+  var params = new URLSearchParams(location.search);
+  var PAGE = document.body.getAttribute('data-page') || 'index';
+  var IS_TEST = params.get('test') === '1'; // 테스트 모드: 이벤트에 is_test 표시 + 실제 이동 생략
+  var base = {
+    page: PAGE,
+    audience: PAGE === 'index' ? 'index' : PAGE,
+    utm_source: params.get('utm_source') || 'direct',
+    utm_campaign: params.get('utm_campaign') || undefined,
+    viewport: innerWidth < 768 ? 'mobile' : innerWidth < 1024 ? 'tablet' : 'desktop'
+  };
+  if (IS_TEST) base.is_test = true;
+
+  function info(el) {
+    var href = el.getAttribute('href') || '';
+    var kind = el.getAttribute('data-cta-kind') ||
+      (el.classList.contains('js-store') ? 'store' : el.classList.contains('js-download') ? 'download' :
+       href.indexOf('tel:') === 0 ? 'tel' : el.tagName === 'BUTTON' ? 'button' : 'link');
+    return Object.assign({
+      cta_id: el.getAttribute('data-cta'),
+      cta_kind: kind,
+      cta_label: (el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60),
+      cta_store: el.getAttribute('data-store') || undefined
+    }, base);
+  }
+  function send(name, props) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(Object.assign({ event: name }, props));
+    if (window.amplitude && window.amplitude.track) return window.amplitude.track(name, props);
+  }
+  window.__ctaSend = send;
+
+  /* 노출: 50% 이상 보이면 1회 (sticky·모달처럼 나중에 보이는 CTA도 그 시점에 기록) */
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      var el = en.target;
+      if (!en.isIntersecting || seen.has(el)) return;
+      var r = el.getBoundingClientRect();
+      if (r.width === 0 || r.height === 0) return; // display:none 등 실제로 안 보이는 경우 제외
+      seen.add(el);
+      io.unobserve(el);
+      send('cta_impression', info(el));
     });
-  });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-cta]').forEach(function (el) { io.observe(el); });
+
+  /* 클릭: 캡처 단계에서 먼저 기록 → 페이지를 떠나는 CTA는 전송 후 이동 */
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('[data-cta]');
+    if (!el) return;
+    var props = info(el);
+    if (IS_TEST) {
+      e.preventDefault(); e.stopImmediatePropagation();
+      send('cta_click', props);
+      console.info('[CTA 테스트] click', props.cta_id);
+      return;
+    }
+    var res = send('cta_click', props);
+    var href = el.getAttribute('href') || '';
+    var leaves = href && href.charAt(0) !== '#' && href.indexOf('tel:') !== 0 && !el.classList.contains('js-download') && !el.classList.contains('js-store');
+    if (leaves && res && res.promise && !(e.ctrlKey || e.metaKey || e.shiftKey)) {
+      e.preventDefault();
+      var go = function () { location.href = href; };
+      Promise.race([res.promise, new Promise(function (r) { setTimeout(r, 600); })]).then(go, go);
+    }
+  }, true);
+
+  /* 스토어 이동 CTA(js-download/js-store)는 페이지 스크립트가 호출: 전송 완료(최대 0.6초) 후 이동 */
+  window.__ctaFlushThen = function (fn) {
+    var done = false, go = function () { if (!done) { done = true; fn(); } };
+    try { window.amplitude.flush().promise.then(go, go); } catch (err) { go(); }
+    setTimeout(go, 600);
+  };
+})();
 </script>
 </body>
 </html>
