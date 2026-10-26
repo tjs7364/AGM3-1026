@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한끼배달 랜딩 페이지</title>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --coral: #F45A2A; --ink: #2B2321; --sub: #6B605C; --bg: #FFF7F3; --card: #FFFFFF; }
+  * { box-sizing: border-box; margin: 0; }
+  body { font-family: 'Noto Sans KR', sans-serif; background: var(--bg); color: var(--ink); padding: 48px 16px; word-break: keep-all; }
+  main { max-width: 720px; margin: 0 auto; }
+  h1 { font-family: 'Do Hyeon', sans-serif; font-weight: 400; font-size: clamp(32px, 8vw, 48px); line-height: 1.2; }
+  h1 span { color: var(--coral); }
+  p.lead { color: var(--sub); margin: 10px 0 28px; }
+  .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  a.card { display: block; background: var(--card); border-radius: 18px; padding: 22px; text-decoration: none; color: inherit; box-shadow: 0 8px 24px rgba(43,35,33,.08); border: 2px solid transparent; }
+  a.card:hover, a.card:focus-visible { border-color: var(--coral); outline: none; }
+  .tag { font-size: 12px; font-weight: 700; color: var(--coral); }
+  a.card h2 { font-size: 20px; margin: 4px 0 6px; }
+  a.card p { font-size: 14px; color: var(--sub); }
+  footer { margin-top: 32px; font-size: 12px; color: var(--sub); }
+</style>
+</head>
+<body>
+<main>
+  <h1><span>한끼배달</span> 랜딩 페이지</h1>
+  <p class="lead">광고 클릭 후 도착하는 마케팅 랜딩 페이지 2종입니다.</p>
+  <div class="grid">
+    <a class="card" href="hankki_customer.html">
+      <span class="tag">고객용</span>
+      <h2>웰컴 혜택</h2>
+      <p>처음이거나 1년 만에 돌아온 고객에게 첫 주문 할인, 한끼패스 무료 체험, 친구 초대 쿠폰을 안내해요.</p>
+    </a>
+    <a class="card" href="hankki_owner.html">
+      <span class="tag">사장님용</span>
+      <h2>입점 혜택</h2>
+      <p>신규 사장님께 상위노출, 배달비·광고비 지원, 수수료 할인과 성장 지원 프로그램을 안내해요.</p>
+    </a>
+  </div>
+  <footer>한끼배달은 마케팅 실습용 가상 브랜드이며 실제 서비스가 아닙니다.</footer>
+</main>
+<!-- Amplitude Analytics: API 키는 build_site.py가 .env 값으로 치환 (비밀키는 페이지에 넣지 않음) -->
+<script src="https://cdn.jsdelivr.net/npm/@amplitude/analytics-browser@2.48.1/lib/scripts/amplitude-min.js"></script>
+<script>
+  (function () {
+    var KEY = '%%AMPLITUDE_API_KEY%%';
+    if (!window.amplitude || KEY.indexOf('%%') === 0) return;
+    window.amplitude.init(KEY, {
+      autocapture: { pageViews: true, sessions: true, attribution: true, formInteractions: false, fileDownloads: false, elementInteractions: false }
+    });
+  })();
+</script>
+<script>
+  document.querySelectorAll('a.card').forEach(function (a) {
+    a.addEventListener('click', function () {
+      if (window.amplitude && window.amplitude.track) window.amplitude.track('index_card_click', { target: a.getAttribute('href'), page: 'index' });
+    });
+  });
+</script>
+</body>
+</html>

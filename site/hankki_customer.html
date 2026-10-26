@@ -707,6 +707,17 @@
 
 <div class="toast" id="toast"></div>
 
+<!-- Amplitude Analytics: API 키는 build_site.py가 .env 값으로 치환 (비밀키는 페이지에 넣지 않음) -->
+<script src="https://cdn.jsdelivr.net/npm/@amplitude/analytics-browser@2.48.1/lib/scripts/amplitude-min.js"></script>
+<script>
+  (function () {
+    var KEY = '%%AMPLITUDE_API_KEY%%';
+    if (!window.amplitude || KEY.indexOf('%%') === 0) return;
+    window.amplitude.init(KEY, {
+      autocapture: { pageViews: true, sessions: true, attribution: true, formInteractions: false, fileDownloads: false, elementInteractions: false }
+    });
+  })();
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
 (function () {
@@ -754,7 +765,9 @@
 
   function track(name, data) {
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(Object.assign({ event: name, utm_source: src || 'direct' }, data || {}));
+    var props = Object.assign({ utm_source: src || 'direct', audience: 'customer', page: 'customer' }, data || {});
+    window.dataLayer.push(Object.assign({ event: name }, props));
+    if (window.amplitude && window.amplitude.track) window.amplitude.track(name, props);
   }
 
   /* ===== 기기 판별 → 스토어 / 데스크톱은 QR 모달 ===== */

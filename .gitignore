@@ -1,6 +1,13 @@
-# 배포용 HTML만 저장소에 올림 (원본·버전·스크린샷·Artifact 원본은 로컬 보관)
+# 비밀값: 절대 커밋 금지
+.env
+.env.*
+!.env.example
+
+# 배포용 HTML·빌드 스크립트만 저장소에 올림 (원본·버전·스크린샷은 로컬 보관)
 /*
 !/.gitignore
+!/.env.example
+!/build_site.py
 !/site/
 /site/*
 !/site/*.html
